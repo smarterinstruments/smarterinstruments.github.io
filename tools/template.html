@@ -129,7 +129,9 @@ footer a{color:var(--muted)}
   .hint{display:none}
 }
 .seglist.esra{color:var(--blue);font-weight:500}
-.esra{fill:url(#esraHatch);stroke:var(--esra);stroke-width:.9;pointer-events:none}:root{--esra:#E8590C;--esra-bg:rgba(232,89,12,.10)}#metric{display:none}.esra-toggle{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);cursor:pointer;margin-left:10px}.esra-toggle i{width:14px;height:10px;display:inline-block;border:1px solid var(--esra);background:repeating-linear-gradient(45deg,var(--esra-bg),var(--esra-bg) 2px,var(--esra) 2px,var(--esra) 3px)}\n</style>
+.esra{fill:url(#esraHatch);stroke:var(--esra);stroke-width:.9;pointer-events:none}:root{--esra:#E8590C;--esra-bg:rgba(232,89,12,.10)}#metric{display:none}.esra-toggle{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);cursor:pointer;margin-left:10px}.esra-toggle i{width:14px;height:10px;display:inline-block;border:1px solid var(--esra);background:repeating-linear-gradient(45deg,var(--esra-bg),var(--esra-bg) 2px,var(--esra) 2px,var(--esra) 3px)}\n.zoomctl{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:4px;z-index:3}.zoomctl button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--card,#fff);color:var(--ink);font-size:17px;line-height:1;cursor:pointer;box-shadow:var(--shadow)}.zoomctl button:hover{border-color:var(--blue);color:var(--blue)}
+.mapbox svg{touch-action:pan-y;cursor:grab}.mapbox svg.dragging{cursor:grabbing}.land,.state,.esra{vector-effect:non-scaling-stroke}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -154,6 +156,7 @@ footer a{color:var(--muted)}
   </div>
   <div class="mapbox" id="mapbox">
     <svg id="map" xmlns="http://www.w3.org/2000/svg" role="img"></svg>
+    <div class="zoomctl" id="zoomctl"><button data-z="in" title="Zoom in" aria-label="Zoom in">+</button><button data-z="out" title="Zoom out" aria-label="Zoom out">−</button><button data-z="reset" title="Reset" aria-label="Reset zoom">⟲</button></div>
     <div class="tip" id="tip"></div>
     <div class="hint" id="hint"></div>
   </div>
@@ -325,7 +328,7 @@ function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); f
 function renderMap() {
   const G = VIEW === 'world' ? WORLD : EUROPE;
   $('esraToggle').style.display = VIEW === 'europe' ? '' : 'none';
-  svg.setAttribute('viewBox', `0 0 ${G.W} ${G.H}`);
+  applyZoom(G);
   while (svg.firstChild) svg.removeChild(svg.firstChild);
   if (VIEW === 'world') el('path', { d: WORLD.sphere, class: 'sphere' }, svg);
   const land = el('g', { class: 'landg' }, svg);
@@ -345,7 +348,7 @@ function renderMap() {
   if (VIEW === 'europe' && ESRA_ON) {
     let defs = svg.querySelector('defs'); if (!defs) defs = el('defs', {}, svg);
     const pat = el('pattern', { id: 'esraHatch', patternUnits: 'userSpaceOnUse', width: 5, height: 5, patternTransform: 'rotate(45)' }, defs);
-    el('line', { x1: 0, y1: 0, x2: 0, y2: 5, stroke: 'var(--esra)', 'stroke-width': 1.4 }, pat);
+    el('line', { x1: 0, y1: 0, x2: 0, y2: 5, stroke: 'var(--esra)', 'stroke-width': 1.1 }, pat);
     const eg = el('g', { class: 'esra-layer' }, svg);
     ESRA_GEO.regions.forEach(r => { el('path', { d: r.d, class: 'esra', 'data-id': r.id }, eg); });
   }
@@ -515,12 +518,52 @@ svg.addEventListener('click', e => {
 // touch: first tap shows the tooltip, second tap on the same target opens
 svg.addEventListener('pointerup', e => {
   if (e.pointerType !== 'touch') return;
+  if (moved || ptrs.size > 1) { return; }
   lastTouch = Date.now();
   const n = targetOf(e); if (!n) { pinned = null; hideTip(); return; }
   const key = JSON.stringify(n.__t); const r = box.getBoundingClientRect();
   if (pinned && pinned.key === key) { pinned = null; hideTip(); activate(n.__t); }
   else { pinned = { key, touch: true }; showTip(n.__t, e.clientX - r.left, e.clientY - r.top); }
 });
+
+// ---------- zoom & pan (viewBox based; wheel, drag, pinch, buttons) ----------
+const ZOOM = { world: null, europe: null };   // {x,y,w,h} per view, null = full extent
+function fullBox(G) { return { x: 0, y: 0, w: G.W, h: G.H }; }
+function curG() { return VIEW === 'world' ? WORLD : EUROPE; }
+function applyZoom(G) { const z = ZOOM[VIEW] || fullBox(G); svg.setAttribute('viewBox', `${z.x} ${z.y} ${z.w} ${z.h}`); svg.style.touchAction = ZOOM[VIEW] ? 'none' : 'pan-y'; const zc = $('zoomctl'); if (zc) zc.classList.toggle('zoomed', !!ZOOM[VIEW]); }
+function clampBox(z, G) {
+  const minW = G.W / 10; z.w = Math.min(G.W, Math.max(minW, z.w)); z.h = z.w * G.H / G.W;
+  z.x = Math.min(G.W - z.w, Math.max(0, z.x)); z.y = Math.min(G.H - z.h, Math.max(0, z.y)); return z;
+}
+function svgPoint(clientX, clientY) { const r = svg.getBoundingClientRect(); const z = ZOOM[VIEW] || fullBox(curG()); return [z.x + (clientX - r.left) / r.width * z.w, z.y + (clientY - r.top) / r.height * z.h]; }
+function zoomAt(factor, cx, cy) {  // factor > 1 zooms in; (cx, cy) in viewBox units stays fixed
+  const G = curG(); const z = Object.assign({}, ZOOM[VIEW] || fullBox(G));
+  const nw = z.w / factor; if (nw >= G.W) { ZOOM[VIEW] = null; applyZoom(G); return; }
+  const nx = cx - (cx - z.x) / factor, ny = cy - (cy - z.y) / factor;
+  ZOOM[VIEW] = clampBox({ x: nx, y: ny, w: nw, h: nw * G.H / G.W }, G); applyZoom(G);
+}
+function panBy(dx, dy) { const G = curG(); if (!ZOOM[VIEW]) return; const z = Object.assign({}, ZOOM[VIEW]); z.x -= dx; z.y -= dy; ZOOM[VIEW] = clampBox(z, G); applyZoom(G); }
+svg.addEventListener('wheel', e => { e.preventDefault(); const [cx, cy] = svgPoint(e.clientX, e.clientY); const f = Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0018)); zoomAt(f, cx, cy); hideTip(); }, { passive: false });
+$('zoomctl').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const G = curG(); const z = ZOOM[VIEW] || fullBox(G); const cx = z.x + z.w / 2, cy = z.y + z.h / 2;
+  if (b.dataset.z === 'in') zoomAt(1.6, cx, cy); else if (b.dataset.z === 'out') zoomAt(1 / 1.6, cx, cy); else { ZOOM[VIEW] = null; applyZoom(G); } hideTip(); });
+const ptrs = new Map(); let drag = null, pinch = null, moved = false;
+svg.addEventListener('pointerdown', e => { ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false;
+  if (ptrs.size === 1) { drag = { x: e.clientX, y: e.clientY }; }
+  else if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), cx: (a[0] + b[0]) / 2, cy: (a[1] + b[1]) / 2 }; drag = null; }
+  try { svg.setPointerCapture(e.pointerId); } catch (x) {} });
+svg.addEventListener('pointermove', e => {
+  if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, [e.clientX, e.clientY]);
+  if (pinch && ptrs.size === 2) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2;
+    if (d > 0 && pinch.d > 0) { const [sx, sy] = svgPoint(pinch.cx, pinch.cy); zoomAt(d / pinch.d, sx, sy); const r = svg.getBoundingClientRect(); const z = ZOOM[VIEW] || fullBox(curG()); panBy((cx - pinch.cx) / r.width * z.w, (cy - pinch.cy) / r.height * z.h); }
+    pinch = { d, cx, cy }; moved = true; hideTip(); return; }
+  if (drag && e.pointerType === 'touch' && !ZOOM[VIEW]) return;  // not zoomed: one finger scrolls the page
+  if (drag && (e.buttons & 1 || e.pointerType === 'touch')) { const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!moved && Math.hypot(dx, dy) < 4) return; moved = true; svg.classList.add('dragging');
+    const r = svg.getBoundingClientRect(); const z = ZOOM[VIEW] || fullBox(curG()); panBy(dx / r.width * z.w, dy / r.height * z.h); drag = { x: e.clientX, y: e.clientY }; hideTip(); }
+});
+function endPtr(e) { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; if (ptrs.size === 0) { drag = null; svg.classList.remove('dragging'); } }
+svg.addEventListener('pointerup', endPtr); svg.addEventListener('pointercancel', endPtr); svg.addEventListener('lostpointercapture', endPtr);
+svg.addEventListener('click', e => { if (moved) { e.stopImmediatePropagation(); e.preventDefault(); moved = false; } }, true);
 
 // ---------- controls ----------
 function setView(v) { VIEW = v; pinned = null; hideTip(); renderTexts(); renderMap(); pushUrl(); }
