@@ -177,7 +177,7 @@ let ESRA_ON = true;
 const T = {
   cs: {
     title: 'Global and EU Semiconductor Value Chain Radar',
-    lede: 'Které země a regiony už mají týdenní radar veřejné aktivity firem a institucí v polovodičovém hodnotovém řetězci – ve stejné taxonomii, se stejnou metrikou. Číslo v mapě je počet sledovaných organizací; klik otevře kartu regionu a jeho živý radar.',
+    lede: 'Které země a regiony už mají týdenní radar veřejné aktivity firem a institucí v polovodičovém hodnotovém řetězci – ve stejné taxonomii, se stejnou metrikou. Najetím na zemi nebo region se zobrazí čísla; klik otevře kartu regionu a jeho živý radar.',
     world: 'Svět', europe: 'Evropa',
     orgs: 'Organizace', active31: 'Aktivní za 31 dní', active31s: 'Aktivní 31 d', news: 'Zprávy', events: 'Termíny', ipcei: 'IPCEI',
     regions: 'Sledované regiony', legendEsra: 'členský region ESRA (44 regionů, esra-org.eu)', esraToggle: 'ESRA regiony', esraMember: 'členský region ESRA', esraInit: 'iniciátor aliance', esraRegion: 'region', esraRegions: 'regiony', esraNone: 'ESRA: žádný členský region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'vyhlédnuto k podpoře (BMWE, 30. 6. 2026), schválení Komise probíhá', updated: 'Aktualizace', edition: 'Edice', open: 'Živý radar', openCard: 'Karta regionu', clickCard: 'Klik → karta regionu a živý radar', repo: 'Data (GitHub)',
@@ -191,11 +191,11 @@ const T = {
       'Postup pro novou zemi: 1) sběr základních dat o organizacích podle šablony CNSC se zdrojovou URL, 2) kontrola taxonomie a zdrojů, 3) country radar jako náhled, 4) validace partnerem v zemi (klastr, kompetenční centrum, agentura), 5) zveřejnění a týdenní aktualizace.',
       'Stavy: v provozu = týdenní edice; náhled = radar hotový, čeká na validaci partnera; interní pilot = jen pro CNSC; sběr dat = dávky přijaté, radar se staví.'
     ],
-    foot: 'Mapa: Natural Earth (public domain) přes world-atlas · spolkové země: © GeoBasis-DE / BKG (dl-de/by-2-0) přes deutschlandGeoJSON · projekce d3-geo. Data: regionální radary CNSC; čísla se při každé edici přepočítají.'
+    foot: 'Mapa: Natural Earth (public domain) přes world-atlas · spolkové země: © GeoBasis-DE / BKG (dl-de/by-2-0) přes deutschlandGeoJSON · projekce d3-geo · regiony ESRA: hranice NUTS 2021/2016 © EuroGeographics (Eurostat GISCO přes Nuts2json), členství esra-org.eu. Data: regionální radary CNSC; čísla se při každé edici přepočítají.'
   },
   en: {
     title: 'Global and EU Semiconductor Value Chain Radar',
-    lede: 'Which countries and regions already have a weekly radar of public activity across the semiconductor value chain – same taxonomy, same metric. The number on the map is the count of tracked organisations; click opens the region\'s card and live radar.',
+    lede: 'Which countries and regions already have a weekly radar of public activity across the semiconductor value chain – same taxonomy, same metric. Hover a country or region for its figures; click opens the region\'s card and live radar.',
     world: 'World', europe: 'Europe',
     orgs: 'Organisations', active31: 'Active in 31 days', active31s: 'Active 31 d', news: 'News items', events: 'Dates', ipcei: 'IPCEI',
     regions: 'Tracked regions', legendEsra: 'ESRA member region (44 regions, esra-org.eu)', esraToggle: 'ESRA regions', esraMember: 'ESRA member region', esraInit: 'initiator of the alliance', esraRegion: 'region', esraRegions: 'regions', esraNone: 'ESRA: no member region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'earmarked for funding (BMWE, 30 Jun 2026), Commission approval pending', updated: 'Updated', edition: 'Edition', open: 'Live radar', openCard: 'Country card', clickCard: 'Click → country card & live radar', repo: 'Data (GitHub)',
@@ -209,11 +209,11 @@ const T = {
       'Onboarding a country: 1) collect master data on organisations in the CNSC template with a source URL, 2) taxonomy and source check, 3) country radar as a preview, 4) validation by a partner in the country (cluster, competence centre, agency), 5) publication and weekly updates.',
       'Statuses: live = weekly editions; preview = radar built, awaiting partner validation; internal pilot = CNSC only; data collection = batches received, radar being built.'
     ],
-    foot: 'Map: Natural Earth (public domain) via world-atlas · German states: © GeoBasis-DE / BKG (dl-de/by-2-0) via deutschlandGeoJSON · projection d3-geo. Data: CNSC regional radars; figures are recomputed with every edition.'
+    foot: 'Map: Natural Earth (public domain) via world-atlas · German states: © GeoBasis-DE / BKG (dl-de/by-2-0) via deutschlandGeoJSON · projection d3-geo · ESRA regions: NUTS 2021/2016 boundaries © EuroGeographics (Eurostat GISCO via Nuts2json), membership esra-org.eu. Data: CNSC regional radars; figures are recomputed with every edition.'
   },
   de: {
     title: 'Global and EU Semiconductor Value Chain Radar',
-    lede: 'Welche Länder und Regionen bereits einen wöchentlichen Radar der öffentlichen Aktivität entlang der Halbleiter-Wertschöpfungskette haben – gleiche Taxonomie, gleiche Metrik. Die Zahl auf der Karte ist die Anzahl erfasster Organisationen; Klick öffnet Regionskarte und Live-Radar.',
+    lede: 'Welche Länder und Regionen bereits einen wöchentlichen Radar der öffentlichen Aktivität entlang der Halbleiter-Wertschöpfungskette haben – gleiche Taxonomie, gleiche Metrik. Mit dem Mauszeiger erscheinen die Zahlen; Klick öffnet Regionskarte und Live-Radar.',
     world: 'Welt', europe: 'Europa',
     orgs: 'Organisationen', active31: 'Aktiv in 31 Tagen', active31s: 'Aktiv 31 T.', news: 'Meldungen', events: 'Termine', ipcei: 'IPCEI',
     regions: 'Erfasste Regionen', legendEsra: 'ESRA-Mitgliedsregion (44 Regionen, esra-org.eu)', esraToggle: 'ESRA-Regionen', esraMember: 'ESRA-Mitgliedsregion', esraInit: 'Initiator der Allianz', esraRegion: 'Region', esraRegions: 'Regionen', esraNone: 'ESRA: keine Mitgliedsregion', ipceiAst: 'IPCEI AST', ipceiAstNote: 'zur Förderung vorgesehen (BMWE, 30.06.2026), Genehmigung der Kommission läuft', updated: 'Aktualisiert', edition: 'Ausgabe', open: 'Live-Radar', openCard: 'Regionskarte', clickCard: 'Klick → Regionskarte & Live-Radar', repo: 'Daten (GitHub)',
@@ -227,7 +227,7 @@ const T = {
       'Aufnahme eines Landes: 1) Stammdaten der Organisationen in der CNSC-Vorlage mit Quell-URL erheben, 2) Taxonomie- und Quellenprüfung, 3) Länder-Radar als Vorschau, 4) Validierung durch einen Partner im Land (Cluster, Kompetenzzentrum, Agentur), 5) Veröffentlichung und wöchentliche Aktualisierung.',
       'Status: live = wöchentliche Ausgaben; Vorschau = Radar fertig, wartet auf Partnervalidierung; interner Pilot = nur CNSC; Datenerhebung = Lieferungen eingegangen, Radar im Aufbau.'
     ],
-    foot: 'Karte: Natural Earth (public domain) über world-atlas · Bundesländer: © GeoBasis-DE / BKG (dl-de/by-2-0) über deutschlandGeoJSON · Projektion d3-geo. Daten: regionale Radare des CNSC; Zahlen werden mit jeder Ausgabe neu berechnet.'
+    foot: 'Karte: Natural Earth (public domain) über world-atlas · Bundesländer: © GeoBasis-DE / BKG (dl-de/by-2-0) über deutschlandGeoJSON · Projektion d3-geo · ESRA-Regionen: NUTS-Grenzen 2021/2016 © EuroGeographics (Eurostat GISCO via Nuts2json), Mitgliedschaft esra-org.eu. Daten: regionale Radare des CNSC; Zahlen werden mit jeder Ausgabe neu berechnet.'
   }
 };
 
