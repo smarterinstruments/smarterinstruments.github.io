@@ -1,0 +1,1241 @@
+{
+ "updated": "2026-11-17",
+ "edition": "W46/2026",
+ "statuses": {
+  "live": {
+   "cs": "v provozu, týdenní",
+   "en": "live, weekly",
+   "de": "live, wöchentlich"
+  },
+  "preview": {
+   "cs": "náhled – před validací partnerem",
+   "en": "preview – before partner validation",
+   "de": "Vorschau – vor Partnervalidierung"
+  },
+  "pilot": {
+   "cs": "interní pilot",
+   "en": "internal pilot",
+   "de": "interner Pilot"
+  },
+  "collecting": {
+   "cs": "sběr dat",
+   "en": "data collection",
+   "de": "Datenerhebung"
+  },
+  "planned": {
+   "cs": "plánováno",
+   "en": "planned",
+   "de": "geplant"
+  }
+ },
+ "segments": [
+  {
+   "id": "design",
+   "cs": "Návrh čipů a IP",
+   "en": "Chip design & IP",
+   "de": "Chipdesign & IP",
+   "c": "#0066B5"
+  },
+  {
+   "id": "software",
+   "cs": "Software pro čipy",
+   "en": "Software for chips",
+   "de": "Software für Chips",
+   "c": "#65A30D"
+  },
+  {
+   "id": "equipment",
+   "cs": "Zařízení",
+   "en": "Equipment",
+   "de": "Anlagen",
+   "c": "#7C3AED"
+  },
+  {
+   "id": "metrology",
+   "cs": "Metrologie",
+   "en": "Metrology",
+   "de": "Messtechnik",
+   "c": "#DB2777"
+  },
+  {
+   "id": "subsystems",
+   "cs": "Subsystémy a služby",
+   "en": "Subsystems & services",
+   "de": "Subsysteme & Dienstleistungen",
+   "c": "#D97706"
+  },
+  {
+   "id": "materials",
+   "cs": "Materiály",
+   "en": "Materials",
+   "de": "Materialien",
+   "c": "#0D9488"
+  },
+  {
+   "id": "fab",
+   "cs": "Výroba a pouzdření",
+   "en": "Fab & packaging",
+   "de": "Fertigung & Packaging",
+   "c": "#B91C1C"
+  },
+  {
+   "id": "distribution",
+   "cs": "Distribuce",
+   "en": "Distribution",
+   "de": "Distribution",
+   "c": "#16A34A"
+  },
+  {
+   "id": "downstream",
+   "cs": "Aplikace a systémy",
+   "en": "Applications & systems",
+   "de": "Anwendungen & Systeme",
+   "c": "#64748B"
+  },
+  {
+   "id": "ecosystem",
+   "cs": "Výzkum, vzdělávání, klastry",
+   "en": "Research, skills & clusters",
+   "de": "Forschung, Bildung, Cluster",
+   "c": "#0891B2"
+  }
+ ],
+ "regions": [
+  {
+   "id": "CZ",
+   "a2": "CZ",
+   "level": "country",
+   "name": {
+    "cs": "Česko",
+    "en": "Czechia",
+    "de": "Tschechien"
+   },
+   "host": {
+    "cs": "CNSC – český pilot hodnotového řetězce",
+    "en": "CNSC – Czech value-chain pilot",
+    "de": "CNSC – tschechischer Wertschöpfungsketten-Pilot"
+   },
+   "status": "pilot",
+   "public": false,
+   "edition": "W46/2026",
+   "updated": "2026-11-14",
+   "orgs": 72,
+   "active31": 22,
+   "news": 59,
+   "events": 17,
+   "ipcei": 0,
+   "url": "https://claude.ai/artifact/DvQP92UiPkbmSDMkL4Lpq1",
+   "seg": {
+    "subsystems": 20,
+    "design": 12,
+    "fab": 9,
+    "distribution": 9,
+    "metrology": 7,
+    "materials": 7,
+    "equipment": 5,
+    "software": 3
+   }
+  },
+  {
+   "id": "DE-SN",
+   "a2": "DE",
+   "level": "state",
+   "parent": "DE",
+   "name": {
+    "cs": "Sasko",
+    "en": "Saxony",
+    "de": "Sachsen"
+   },
+   "host": {
+    "cs": "Sasko (Silicon Saxony)",
+    "en": "Saxony (Silicon Saxony)",
+    "de": "Sachsen (Silicon Saxony)"
+   },
+   "status": "preview",
+   "public": true,
+   "edition": "W46/2026",
+   "updated": "2026-11-16",
+   "orgs": 558,
+   "verified": 532,
+   "active31": 28,
+   "news": 68,
+   "events": 5,
+   "ipcei": 15,
+   "url": "https://smarterinstruments.github.io/Saxony-Radar/",
+   "repo": "https://github.com/smarterinstruments/Saxony-Radar",
+   "seg": {
+    "subsystems": 198,
+    "equipment": 79,
+    "ecosystem": 67,
+    "distribution": 47,
+    "materials": 40,
+    "metrology": 38,
+    "fab": 36,
+    "design": 30,
+    "software": 22,
+    "downstream": 1
+   }
+  },
+  {
+   "id": "DE-BY",
+   "a2": "DE",
+   "level": "state",
+   "parent": "DE",
+   "name": {
+    "cs": "Bavorsko",
+    "en": "Bavaria",
+    "de": "Bayern"
+   },
+   "host": {
+    "cs": "Bavorsko (Bavarian Chips Alliance)",
+    "en": "Bavaria (Bavarian Chips Alliance)",
+    "de": "Bayern (Bavarian Chips Alliance)"
+   },
+   "status": "preview",
+   "public": true,
+   "edition": "W46/2026",
+   "updated": "2026-11-16",
+   "orgs": 142,
+   "verified": 140,
+   "active31": 108,
+   "news": 141,
+   "events": 7,
+   "ipcei": 14,
+   "url": "https://smarterinstruments.github.io/Bavaria-Radar/",
+   "repo": "https://github.com/smarterinstruments/Bavaria-Radar",
+   "seg": {
+    "fab": 30,
+    "design": 26,
+    "subsystems": 25,
+    "equipment": 17,
+    "ecosystem": 13,
+    "materials": 10,
+    "software": 7,
+    "metrology": 6,
+    "distribution": 5,
+    "downstream": 3
+   }
+  },
+  {
+   "id": "RO",
+   "a2": "RO",
+   "level": "country",
+   "name": {
+    "cs": "Rumunsko",
+    "en": "Romania",
+    "de": "Rumänien"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 15,
+   "news": 20,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Romania_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "HU",
+   "a2": "HU",
+   "level": "country",
+   "name": {
+    "cs": "Maďarsko",
+    "en": "Hungary",
+    "de": "Ungarn"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 14,
+   "news": 25,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Hungary_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "SK",
+   "a2": "SK",
+   "level": "country",
+   "name": {
+    "cs": "Slovensko",
+    "en": "Slovakia",
+    "de": "Slowakei"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 16,
+   "news": 20,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Slovakia_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "CA",
+   "a2": "CA",
+   "level": "country",
+   "name": {
+    "cs": "Kanada",
+    "en": "Canada",
+    "de": "Kanada"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 15,
+   "news": 25,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Canada_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "VN",
+   "a2": "VN",
+   "level": "country",
+   "name": {
+    "cs": "Vietnam",
+    "en": "Vietnam",
+    "de": "Vietnam"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 14,
+   "news": 22,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Vietnam_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "MY",
+   "a2": "MY",
+   "level": "country",
+   "name": {
+    "cs": "Malajsie",
+    "en": "Malaysia",
+    "de": "Malaysia"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 18,
+   "news": 20,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Malaysia_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "IN",
+   "a2": "IN",
+   "level": "country",
+   "name": {
+    "cs": "Indie",
+    "en": "India",
+    "de": "Indien"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 15,
+   "news": 22,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "India_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "IL",
+   "a2": "IL",
+   "level": "country",
+   "name": {
+    "cs": "Izrael",
+    "en": "Israel",
+    "de": "Israel"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 18,
+   "news": 21,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Israel_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "LT",
+   "a2": "LT",
+   "level": "country",
+   "name": {
+    "cs": "Litva",
+    "en": "Lithuania",
+    "de": "Litauen"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše) – region Pobaltí",
+    "en": "Gemini batches 01–02 (CNSC research) – Baltics region",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche) – Region Baltikum"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 8,
+   "active31": null,
+   "news": null,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": "BALT",
+   "workbook": "Baltics_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "EE",
+   "a2": "EE",
+   "level": "country",
+   "name": {
+    "cs": "Estonsko",
+    "en": "Estonia",
+    "de": "Estland"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše) – region Pobaltí",
+    "en": "Gemini batches 01–02 (CNSC research) – Baltics region",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche) – Region Baltikum"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 6,
+   "active31": null,
+   "news": null,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": "BALT",
+   "workbook": "Baltics_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "LV",
+   "a2": "LV",
+   "level": "country",
+   "name": {
+    "cs": "Lotyšsko",
+    "en": "Latvia",
+    "de": "Lettland"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše) – region Pobaltí",
+    "en": "Gemini batches 01–02 (CNSC research) – Baltics region",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche) – Region Baltikum"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 6,
+   "active31": null,
+   "news": null,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": "BALT",
+   "workbook": "Baltics_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "CN",
+   "a2": "CN",
+   "level": "country",
+   "name": {
+    "cs": "Čína",
+    "en": "China",
+    "de": "China"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 28,
+   "news": 30,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "China_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "SG",
+   "a2": "SG",
+   "level": "country",
+   "name": {
+    "cs": "Singapur",
+    "en": "Singapore",
+    "de": "Singapur"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 15,
+   "news": 23,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Singapore_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "PL",
+   "a2": "PL",
+   "level": "country",
+   "name": {
+    "cs": "Polsko",
+    "en": "Poland",
+    "de": "Polen"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 14,
+   "news": 22,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Poland_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "DK",
+   "a2": "DK",
+   "level": "country",
+   "name": {
+    "cs": "Dánsko",
+    "en": "Denmark",
+    "de": "Dänemark"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–01 (CNSC rešerše)",
+    "en": "Gemini batches 01–01 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–01 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 10,
+   "active31": 7,
+   "news": 10,
+   "events": null,
+   "ipcei": null,
+   "batches": 1,
+   "group": null,
+   "workbook": "Denmark_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "NO",
+   "a2": "NO",
+   "level": "country",
+   "name": {
+    "cs": "Norsko",
+    "en": "Norway",
+    "de": "Norwegen"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–01 (CNSC rešerše)",
+    "en": "Gemini batches 01–01 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–01 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 10,
+   "active31": 7,
+   "news": 10,
+   "events": null,
+   "ipcei": null,
+   "batches": 1,
+   "group": null,
+   "workbook": "Norway_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "FI",
+   "a2": "FI",
+   "level": "country",
+   "name": {
+    "cs": "Finsko",
+    "en": "Finland",
+    "de": "Finnland"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 17,
+   "news": 21,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Finland_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "SE",
+   "a2": "SE",
+   "level": "country",
+   "name": {
+    "cs": "Švédsko",
+    "en": "Sweden",
+    "de": "Schweden"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 18,
+   "news": 23,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Sweden_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "PT",
+   "a2": "PT",
+   "level": "country",
+   "name": {
+    "cs": "Portugalsko",
+    "en": "Portugal",
+    "de": "Portugal"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 19,
+   "news": 31,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Portugal_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "ES",
+   "a2": "ES",
+   "level": "country",
+   "name": {
+    "cs": "Španělsko",
+    "en": "Spain",
+    "de": "Spanien"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 17,
+   "news": 28,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Spain_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "CH",
+   "a2": "CH",
+   "level": "country",
+   "name": {
+    "cs": "Švýcarsko",
+    "en": "Switzerland",
+    "de": "Schweiz"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–02 (CNSC rešerše)",
+    "en": "Gemini batches 01–02 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–02 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 20,
+   "active31": 12,
+   "news": 21,
+   "events": null,
+   "ipcei": null,
+   "batches": 2,
+   "group": null,
+   "workbook": "Switzerland_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "MT",
+   "a2": "MT",
+   "level": "country",
+   "name": {
+    "cs": "Malta",
+    "en": "Malta",
+    "de": "Malta"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–01 (CNSC rešerše)",
+    "en": "Gemini batches 01–01 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–01 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 10,
+   "active31": 10,
+   "news": 10,
+   "events": null,
+   "ipcei": null,
+   "batches": 1,
+   "group": null,
+   "workbook": "Malta_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "GB",
+   "a2": "GB",
+   "level": "country",
+   "name": {
+    "cs": "Spojené království",
+    "en": "United Kingdom",
+    "de": "Vereinigtes Königreich"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 24,
+   "news": 37,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "United Kingdom_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "JP",
+   "a2": "JP",
+   "level": "country",
+   "name": {
+    "cs": "Japonsko",
+    "en": "Japan",
+    "de": "Japan"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 30,
+   "news": 37,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "Japan_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "KR",
+   "a2": "KR",
+   "level": "country",
+   "name": {
+    "cs": "Jižní Korea",
+    "en": "South Korea",
+    "de": "Südkorea"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 28,
+   "news": 31,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "South Korea_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "US",
+   "a2": "US",
+   "level": "country",
+   "name": {
+    "cs": "USA",
+    "en": "United States",
+    "de": "USA"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 28,
+   "news": 31,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "USA_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "TW",
+   "a2": "TW",
+   "level": "country",
+   "name": {
+    "cs": "Tchaj-wan",
+    "en": "Taiwan",
+    "de": "Taiwan"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 28,
+   "news": 32,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "Taiwan_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "AT",
+   "a2": "AT",
+   "level": "country",
+   "name": {
+    "cs": "Rakousko",
+    "en": "Austria",
+    "de": "Österreich"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 23,
+   "news": 35,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "Austria_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "DE-BW",
+   "a2": "DE",
+   "level": "state",
+   "name": {
+    "cs": "Bádensko-Württembersko",
+    "en": "Baden-Württemberg",
+    "de": "Baden-Württemberg"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 23,
+   "news": 36,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "Baden-Wuerttemberg_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "parent": "DE",
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "IT",
+   "a2": "IT",
+   "level": "country",
+   "name": {
+    "cs": "Itálie",
+    "en": "Italy",
+    "de": "Italien"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 24,
+   "news": 35,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "Italy_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "IE",
+   "a2": "IE",
+   "level": "country",
+   "name": {
+    "cs": "Irsko",
+    "en": "Ireland",
+    "de": "Irland"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–03 (CNSC rešerše)",
+    "en": "Gemini batches 01–03 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–03 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 30,
+   "active31": 20,
+   "news": 37,
+   "events": null,
+   "ipcei": null,
+   "batches": 3,
+   "group": null,
+   "workbook": "Ireland_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "FR",
+   "a2": "FR",
+   "level": "country",
+   "name": {
+    "cs": "Francie (Grenoble)",
+    "en": "France (Grenoble focus)",
+    "de": "Frankreich (Schwerpunkt Grenoble)"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–04 (CNSC rešerše)",
+    "en": "Gemini batches 01–04 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–04 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 40,
+   "active31": 28,
+   "news": 48,
+   "events": null,
+   "ipcei": null,
+   "batches": 4,
+   "group": null,
+   "workbook": "France_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "BE",
+   "a2": "BE",
+   "level": "country",
+   "name": {
+    "cs": "Belgie",
+    "en": "Belgium",
+    "de": "Belgien"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–04 (CNSC rešerše)",
+    "en": "Gemini batches 01–04 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–04 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 40,
+   "active31": 25,
+   "news": 44,
+   "events": null,
+   "ipcei": null,
+   "batches": 4,
+   "group": null,
+   "workbook": "Belgium_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  },
+  {
+   "id": "NL",
+   "a2": "NL",
+   "level": "country",
+   "name": {
+    "cs": "Nizozemsko",
+    "en": "Netherlands",
+    "de": "Niederlande"
+   },
+   "host": {
+    "cs": "dávky Gemini 01–07 (CNSC rešerše)",
+    "en": "Gemini batches 01–07 (CNSC research)",
+    "de": "Gemini-Lieferungen 01–07 (CNSC-Recherche)"
+   },
+   "status": "collecting",
+   "public": false,
+   "edition": "intake 2026-11-17",
+   "updated": "2026-11-17",
+   "orgs": 70,
+   "active31": 60,
+   "news": 85,
+   "events": null,
+   "ipcei": null,
+   "batches": 7,
+   "group": null,
+   "workbook": "Netherlands_Radar_batches_2026-11-17.xlsx",
+   "seg": {},
+   "url": "https://claude.ai/artifact/JBzoVNdjb1xcVBJepXVPkQ",
+   "preview": "hub"
+  }
+ ]
+}

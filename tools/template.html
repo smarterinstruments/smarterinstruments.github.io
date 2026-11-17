@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Global and EU Semiconductor Value Chain Radar – alpha</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Which countries and regions already have a weekly radar of public activity in the semiconductor value chain – one taxonomy, one metric. Click a country for its card and live radar.">
+<meta name="description" content="Which countries and regions already have a weekly semiconductor value-chain radar: organisations, activity and status per region, with a link to each full radar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F4; --panel:#FFFFFF; --panel2:#F6F8FA; --ink:#10161D; --muted:#5A6672; --faint:#8A96A3; --line:#D6DCE2; --line2:#E6EAEE;
+  --blue:#0066B5; --blue-deep:#004C86; --blue-soft:#E3EEF8; --ring2:#4A86C5; --warn:#B45309; --warn-bg:#FFF4E0;
+  --sea:#E7EFF7; --land:#D8DFE6; --land-line:#FFFFFF; --parent:#BFD6EC; --pilot:#7FAEDC; --collect:#CFE3F5;
+  --shadow:0 12px 30px -18px rgba(20,80,143,.35);
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --bg:#0E131A; --panel:#161D27; --panel2:#1B2330; --ink:#E8EDF2; --muted:#A5AFBC; --faint:#6F7A89; --line:#2A3441; --line2:#222B37;
+  --blue:#3B8FD9; --blue-deep:#6FAEE8; --blue-soft:#1A2A3D; --ring2:#2F6AA3; --warn:#F2B35A; --warn-bg:#2A2110;
+  --sea:#0F1620; --land:#2A3542; --land-line:#161D27; --parent:#2A4866; --pilot:#2F6AA3; --collect:#223A52;
+  --shadow:0 12px 30px -18px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.4;font-size:15px;-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px)}
+a{color:var(--blue)}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 16px 40px}
+.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;font-size:clamp(22px,3.2vw,34px);line-height:1.1;margin:4px 0 6px;letter-spacing:-.01em}
+.lede{margin:0;max-width:760px;color:var(--muted);font-size:15px}
+.ctrls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lang,.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.lang button,.seg button{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;letter-spacing:.08em;padding:6px 12px;border:0;background:transparent;color:var(--muted);cursor:pointer;white-space:nowrap}
+.lang button.on,.seg button.on{background:var(--blue);color:#fff}
+.ico{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;width:32px;height:32px;cursor:pointer;font-size:15px;line-height:1}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:0 0 14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.tile .v{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:24px;line-height:1.1;color:var(--blue)}
+.tile .l{font-size:12px;color:var(--muted);margin-top:3px}
+.bar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.mapbox{position:relative;background:var(--sea);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.mapbox svg{display:block;width:100%;height:auto}
+.sphere{fill:var(--sea)}
+.land{fill:var(--land);stroke:var(--land-line);stroke-width:.5;transition:fill .15s}
+.land.parent{fill:var(--parent)}
+.land.tracked{fill:var(--blue)}
+.land.pilot{fill:var(--pilot)}
+.land.collecting{fill:var(--collect);stroke:var(--blue);stroke-width:.6;stroke-dasharray:2 1.5}
+.land.micro{stroke:var(--muted);stroke-width:.4}
+.land.micro.collecting,.land.micro.tracked,.land.micro.pilot{stroke:var(--blue);stroke-dasharray:none}
+.land.hov{fill-opacity:.82;stroke:var(--ink);stroke-width:.9}
+.land.pointer,.state.pointer,.badge{cursor:pointer}
+.state{fill:var(--blue);stroke:var(--land-line);stroke-width:.6}
+.state.collecting{fill:var(--collect);stroke:var(--blue);stroke-dasharray:2 1.5;stroke-width:.7}
+.state.hov{fill-opacity:.82;stroke:var(--ink);stroke-width:.9}
+.badge rect{fill:var(--blue);stroke:#fff;stroke-width:1.2}
+.badge.pilot rect{fill:var(--pilot)}
+.badge.collect rect{fill:var(--panel);stroke:var(--blue);stroke-dasharray:3 2}
+.badge.collect text{fill:var(--blue)}
+.badge text{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;fill:#fff;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.badge .sub{font-size:9.5px;font-weight:500;fill:#fff;opacity:.85}
+.badge .lead{stroke:var(--ink);stroke-width:1;opacity:.55;fill:none}
+.badge .dot{fill:var(--ink);opacity:.6}
+.badge:hover rect{filter:brightness(1.12)}
+.tip{position:absolute;pointer-events:none;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.35;min-width:200px;max-width:300px;box-shadow:0 14px 34px -14px rgba(0,0,0,.45);opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;z-index:3}
+.tip.on{opacity:1;transform:none}
+.tip h4{margin:0 0 4px;font-family:"Space Grotesk",Inter,sans-serif;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.tip .code{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.06em}
+.tip .st{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:var(--blue-soft);color:var(--blue);margin:2px 0 6px}
+.tip .st.pilot{background:var(--warn-bg);color:var(--warn)}
+.tip .st.none{background:var(--line2);color:var(--muted)}
+.tip .st.collecting,.card .st.collecting,.chip.collecting{background:var(--collect);color:var(--blue-deep)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px dashed var(--blue);border-radius:999px;padding:4px 10px;font-size:12.5px;color:var(--ink);background:var(--panel)}
+.chip b{font-family:"IBM Plex Mono",monospace;font-weight:600}
+.chip .code{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.06em}
+.tip .nums{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;margin:2px 0 6px}
+.tip .nums b{font-family:"IBM Plex Mono",monospace;font-weight:600;text-align:right}
+.tip .nums span{color:var(--muted)}
+.tip .segs{display:flex;height:6px;border-radius:3px;overflow:hidden;margin:4px 0 5px;background:var(--line2)}
+.tip .segs i{display:block;height:100%}
+.tip .seglist{color:var(--muted);font-size:12px}
+.tip .seglist i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.tip .act{margin-top:6px;font-size:12px;color:var(--blue);font-weight:500}
+.tip .sub{border-top:1px solid var(--line2);margin-top:6px;padding-top:6px}
+.tip .sub div{display:flex;justify-content:space-between;gap:10px}
+.tip .sub b{font-family:"IBM Plex Mono",monospace;font-weight:600}
+.hint{position:absolute;left:10px;bottom:8px;font-size:12px;color:var(--muted);pointer-events:none;background:color-mix(in srgb,var(--sea) 80%,transparent);padding:2px 6px;border-radius:6px}
+.legend{display:flex;gap:14px 20px;flex-wrap:wrap;margin:10px 2px 0;font-size:12.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:10px;border-radius:2px;display:inline-block;border:1px solid var(--line)}
+h2{font-family:"Space Grotesk",Inter,sans-serif;font-size:19px;margin:26px 0 10px;letter-spacing:-.01em}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px 12px;display:flex;flex-direction:column;gap:8px;border-top:3px solid var(--blue)}
+.card.pilot{border-top-color:var(--pilot)}
+.card .h{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card .h b{font-family:"Space Grotesk",Inter,sans-serif;font-size:17px}
+.card .h small{display:block;color:var(--muted);font-weight:400;font-size:12.5px;margin-top:1px}
+.card .code{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;white-space:nowrap;padding-top:4px}
+.card .st{align-self:flex-start;font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--blue-soft);color:var(--blue)}
+.card .st.pilot{background:var(--warn-bg);color:var(--warn)}
+.card .nums{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:2px}
+.card .nums div{text-align:center;background:var(--panel2);border-radius:8px;padding:6px 2px}
+.card .nums b{display:block;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:16px;color:var(--ink)}
+.card .nums span{font-size:10.5px;color:var(--muted);display:block;line-height:1.15;margin-top:1px}
+.card .segs{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--line2)}
+.card .segs i{display:block;height:100%}
+.card .seglist{font-size:12px;color:var(--muted)}
+.card .seglist i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.card .meta{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.card .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.btn{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;letter-spacing:.06em;padding:6px 12px;border-radius:999px;border:1px solid var(--blue);color:#fff;background:var(--blue);text-decoration:none}
+.btn.sec{background:transparent;color:var(--blue)}
+.about{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:16px;color:var(--ink);font-size:14.5px}
+.about p{margin:6px 0}
+.about ol{margin:6px 0 6px 18px;padding:0}
+.about li{margin:3px 0}
+footer{margin-top:18px;font-size:12px;color:var(--faint);line-height:1.5}
+footer a{color:var(--muted)}
+@media (max-width:640px){
+  .wrap{padding:12px 10px 30px}
+  .tile .v{font-size:20px}
+  .card .nums{grid-template-columns:repeat(5,1fr)}
+  .tip{max-width:260px;font-size:12.5px}
+  .tip .segs,.tip .sl{display:none}
+  .hint{display:none}
+}
+.seglist.esra{color:var(--blue);font-weight:500}
+.esra{fill:url(#esraHatch);stroke:var(--esra);stroke-width:.9;pointer-events:none}:root{--esra:#E8590C;--esra-bg:rgba(232,89,12,.10)}#metric{display:none}.esra-toggle{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);cursor:pointer;margin-left:10px}.esra-toggle i{width:14px;height:10px;display:inline-block;border:1px solid var(--esra);background:repeating-linear-gradient(45deg,var(--esra-bg),var(--esra-bg) 2px,var(--esra) 2px,var(--esra) 3px)}\n</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="kicker">Alpha · weekly editions · public sources only</div>
+    <h1 id="title"></h1>
+    <p class="lede" id="lede"></p>
+  </div>
+  <div class="ctrls">
+    <div class="lang" id="lang"><button data-l="cs">CS</button><button data-l="en">EN</button><button data-l="de">DE</button></div>
+    <button class="ico" id="theme" title="light / dark">◐</button>
+  </div>
+</header>
+
+<section class="strip" id="strip"></section>
+
+<section>
+  <div class="bar">
+    <div class="seg" id="view"><button data-v="world"></button><button data-v="europe"></button></div>
+    <div class="seg" id="metric"><button data-m="orgs"></button><button data-m="active31"></button><button data-m="news"></button></div><label class="esra-toggle" id="esraToggle"><input type="checkbox" id="esraChk" checked><i></i><span id="esraLbl"></span></label>
+  </div>
+  <div class="mapbox" id="mapbox">
+    <svg id="map" xmlns="http://www.w3.org/2000/svg" role="img"></svg>
+    <div class="tip" id="tip"></div>
+    <div class="hint" id="hint"></div>
+  </div>
+  <div class="legend" id="legend"></div>
+</section>
+
+<h2 id="h2cards"></h2>
+<section class="cards" id="cards"></section>
+
+<section class="about" id="about"></section>
+<footer id="foot"></footer>
+</div>
+
+<script>
+const WORLD = /*__WORLD__*/;
+const EUROPE = /*__EUROPE__*/;
+const IDX = /*__INDEX__*/;
+const ESRA_GEO = /*__ESRA__*/;
+let ESRA_ON = true;
+
+const T = {
+  cs: {
+    title: 'Global and EU Semiconductor Value Chain Radar',
+    lede: 'Které země a regiony už mají týdenní radar veřejné aktivity firem a institucí v polovodičovém hodnotovém řetězci – ve stejné taxonomii, se stejnou metrikou. Číslo v mapě je počet sledovaných organizací; klik otevře kartu regionu a jeho živý radar.',
+    world: 'Svět', europe: 'Evropa',
+    orgs: 'Organizace', active31: 'Aktivní za 31 dní', active31s: 'Aktivní 31 d', news: 'Zprávy', events: 'Termíny', ipcei: 'IPCEI',
+    regions: 'Sledované regiony', legendEsra: 'členský region ESRA (44 regionů, esra-org.eu)', esraToggle: 'ESRA regiony', esraMember: 'členský region ESRA', esraInit: 'iniciátor aliance', esraRegion: 'region', esraRegions: 'regiony', esraNone: 'ESRA: žádný členský region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'vyhlédnuto k podpoře (BMWE, 30. 6. 2026), schválení Komise probíhá', updated: 'Aktualizace', edition: 'Edice', open: 'Živý radar', openCard: 'Karta regionu', clickCard: 'Klik → karta regionu a živý radar', repo: 'Data (GitHub)',
+    notCovered: 'Zatím bez radaru', join: 'Zájem o zapojení země? info@semicz.cz',
+    hint: 'Najeďte na zemi · klik otevře kartu regionu a živý radar', clickOpen: 'Klik → plný radar', clickZoom: 'Klik → regionální radary', tapAgain: 'Klepněte znovu → otevřít',
+    parentLine: n => `${n} regionální radary`, topSeg: 'Největší segmenty', verified: 'ověřeno', internal: 'interní náhled – zatím bez veřejné stránky',
+    legendTracked: 'radar v provozu / náhled', legendPilot: 'interní pilot', legendParent: 'země s regionálními radary', legendNone: 'zatím bez radaru', legendCollect: 'sběr dat – dávky přijaty', h2collect: 'Ve sběru dat', collectLine: (n,b) => `${n} organizací ve ${b} dávkách`, collectNote: 'Dávky zpracovány do čistého sešitu; radar vznikne po doplnění zdrojů a validaci partnerem.', noAction: 'Radar zatím není otevřený', previewLine: 'Interní náhled radaru sestaven (rozcestník 32 zemí)', inCollect: 've sběru dat',
+    h2cards: 'Sledované regiony', aboutH: 'Jak globální radar vzniká',
+    about: [
+      'Každý regionální radar sleduje ve stejné taxonomii hodnotového řetězce (v1.2, 10 segmentů) veřejnou aktivitu firem a institucí: zprávy, termíny, LinkedIn, YouTube, newsroomy a veletrhy. Globální radar je společný index těchto edic – kolik organizací a aktivity má která země, s odkazem na plný radar.',
+      'Postup pro novou zemi: 1) sběr základních dat o organizacích podle šablony CNSC se zdrojovou URL, 2) kontrola taxonomie a zdrojů, 3) country radar jako náhled, 4) validace partnerem v zemi (klastr, kompetenční centrum, agentura), 5) zveřejnění a týdenní aktualizace.',
+      'Stavy: v provozu = týdenní edice; náhled = radar hotový, čeká na validaci partnera; interní pilot = jen pro CNSC; sběr dat = dávky přijaté, radar se staví.'
+    ],
+    foot: 'Mapa: Natural Earth (public domain) přes world-atlas · spolkové země: © GeoBasis-DE / BKG (dl-de/by-2-0) přes deutschlandGeoJSON · projekce d3-geo. Data: regionální radary CNSC; čísla se při každé edici přepočítají.'
+  },
+  en: {
+    title: 'Global and EU Semiconductor Value Chain Radar',
+    lede: 'Which countries and regions already have a weekly radar of public activity across the semiconductor value chain – same taxonomy, same metric. The number on the map is the count of tracked organisations; click opens the region\'s card and live radar.',
+    world: 'World', europe: 'Europe',
+    orgs: 'Organisations', active31: 'Active in 31 days', active31s: 'Active 31 d', news: 'News items', events: 'Dates', ipcei: 'IPCEI',
+    regions: 'Tracked regions', legendEsra: 'ESRA member region (44 regions, esra-org.eu)', esraToggle: 'ESRA regions', esraMember: 'ESRA member region', esraInit: 'initiator of the alliance', esraRegion: 'region', esraRegions: 'regions', esraNone: 'ESRA: no member region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'earmarked for funding (BMWE, 30 Jun 2026), Commission approval pending', updated: 'Updated', edition: 'Edition', open: 'Live radar', openCard: 'Country card', clickCard: 'Click → country card & live radar', repo: 'Data (GitHub)',
+    notCovered: 'No radar yet', join: 'Want your country in? info@semicz.cz',
+    hint: 'Hover a country · click opens the country card and live radar', clickOpen: 'Click → full radar', clickZoom: 'Click → regional radars', tapAgain: 'Tap again → open',
+    parentLine: n => `${n} regional radars`, topSeg: 'Largest segments', verified: 'verified', internal: 'internal preview – no public page yet',
+    legendTracked: 'radar live / preview', legendPilot: 'internal pilot', legendParent: 'country with regional radars', legendNone: 'no radar yet', legendCollect: 'data collection – batches received', h2collect: 'In data collection', collectLine: (n,b) => `${n} organisations in ${b} batches`, collectNote: 'Batches processed into a clean workbook; the radar follows once sources are added and a partner has validated.', noAction: 'Radar not open yet', previewLine: 'Internal radar preview built (hub of 32 countries)', inCollect: 'in data collection',
+    h2cards: 'Tracked regions', aboutH: 'How the global radar is built',
+    about: [
+      'Every regional radar tracks the public activity of companies and institutions in the same value-chain taxonomy (v1.2, 10 segments): news, dates, LinkedIn, YouTube, newsrooms and trade fairs. The global radar is the shared index of those editions – how many organisations and how much activity each country has, with a link to the full radar.',
+      'Onboarding a country: 1) collect master data on organisations in the CNSC template with a source URL, 2) taxonomy and source check, 3) country radar as a preview, 4) validation by a partner in the country (cluster, competence centre, agency), 5) publication and weekly updates.',
+      'Statuses: live = weekly editions; preview = radar built, awaiting partner validation; internal pilot = CNSC only; data collection = batches received, radar being built.'
+    ],
+    foot: 'Map: Natural Earth (public domain) via world-atlas · German states: © GeoBasis-DE / BKG (dl-de/by-2-0) via deutschlandGeoJSON · projection d3-geo. Data: CNSC regional radars; figures are recomputed with every edition.'
+  },
+  de: {
+    title: 'Global and EU Semiconductor Value Chain Radar',
+    lede: 'Welche Länder und Regionen bereits einen wöchentlichen Radar der öffentlichen Aktivität entlang der Halbleiter-Wertschöpfungskette haben – gleiche Taxonomie, gleiche Metrik. Die Zahl auf der Karte ist die Anzahl erfasster Organisationen; Klick öffnet Regionskarte und Live-Radar.',
+    world: 'Welt', europe: 'Europa',
+    orgs: 'Organisationen', active31: 'Aktiv in 31 Tagen', active31s: 'Aktiv 31 T.', news: 'Meldungen', events: 'Termine', ipcei: 'IPCEI',
+    regions: 'Erfasste Regionen', legendEsra: 'ESRA-Mitgliedsregion (44 Regionen, esra-org.eu)', esraToggle: 'ESRA-Regionen', esraMember: 'ESRA-Mitgliedsregion', esraInit: 'Initiator der Allianz', esraRegion: 'Region', esraRegions: 'Regionen', esraNone: 'ESRA: keine Mitgliedsregion', ipceiAst: 'IPCEI AST', ipceiAstNote: 'zur Förderung vorgesehen (BMWE, 30.06.2026), Genehmigung der Kommission läuft', updated: 'Aktualisiert', edition: 'Ausgabe', open: 'Live-Radar', openCard: 'Regionskarte', clickCard: 'Klick → Regionskarte & Live-Radar', repo: 'Daten (GitHub)',
+    notCovered: 'Noch kein Radar', join: 'Interesse am eigenen Land? info@semicz.cz',
+    hint: 'Land überfahren · Klick öffnet Regionskarte und Live-Radar', clickOpen: 'Klick → vollständiger Radar', clickZoom: 'Klick → regionale Radare', tapAgain: 'Erneut tippen → öffnen',
+    parentLine: n => `${n} regionale Radare`, topSeg: 'Größte Segmente', verified: 'verifiziert', internal: 'interne Vorschau – noch keine öffentliche Seite',
+    legendTracked: 'Radar live / Vorschau', legendPilot: 'interner Pilot', legendParent: 'Land mit regionalen Radaren', legendNone: 'noch kein Radar', legendCollect: 'Datenerhebung – Lieferungen eingegangen', h2collect: 'In Datenerhebung', collectLine: (n,b) => `${n} Organisationen in ${b} Lieferungen`, collectNote: 'Lieferungen in eine bereinigte Arbeitsmappe überführt; der Radar folgt nach Ergänzung der Quellen und Partnervalidierung.', noAction: 'Radar noch nicht geöffnet', previewLine: 'Interne Radar-Vorschau erstellt (Übersicht 32 Länder)', inCollect: 'in Datenerhebung',
+    h2cards: 'Erfasste Regionen', aboutH: 'Wie der globale Radar entsteht',
+    about: [
+      'Jeder regionale Radar erfasst in derselben Wertschöpfungsketten-Taxonomie (v1.2, 10 Segmente) die öffentliche Aktivität von Unternehmen und Institutionen: Meldungen, Termine, LinkedIn, YouTube, Newsrooms und Messen. Der globale Radar ist der gemeinsame Index dieser Ausgaben – wie viele Organisationen und wie viel Aktivität ein Land hat, mit Link zum vollständigen Radar.',
+      'Aufnahme eines Landes: 1) Stammdaten der Organisationen in der CNSC-Vorlage mit Quell-URL erheben, 2) Taxonomie- und Quellenprüfung, 3) Länder-Radar als Vorschau, 4) Validierung durch einen Partner im Land (Cluster, Kompetenzzentrum, Agentur), 5) Veröffentlichung und wöchentliche Aktualisierung.',
+      'Status: live = wöchentliche Ausgaben; Vorschau = Radar fertig, wartet auf Partnervalidierung; interner Pilot = nur CNSC; Datenerhebung = Lieferungen eingegangen, Radar im Aufbau.'
+    ],
+    foot: 'Karte: Natural Earth (public domain) über world-atlas · Bundesländer: © GeoBasis-DE / BKG (dl-de/by-2-0) über deutschlandGeoJSON · Projektion d3-geo. Daten: regionale Radare des CNSC; Zahlen werden mit jeder Ausgabe neu berechnet.'
+  }
+};
+
+// ---------- state ----------
+const q = new URLSearchParams(location.search);
+let LANG = ['cs','en','de'].includes(q.get('lang')) ? q.get('lang') : (navigator.language||'en').slice(0,2);
+if (!T[LANG]) LANG = 'en';
+let VIEW = q.get('view') ? (q.get('view') === 'europe' ? 'europe' : 'world') : (window.innerWidth < 640 ? 'europe' : 'world');
+let METRIC = ['orgs','active31','news'].includes(q.get('metric')) ? q.get('metric') : 'orgs';
+let pinned = null;
+try { const th = localStorage.getItem('gr-theme'); if (th) document.documentElement.setAttribute('data-theme', th); } catch(e) {}
+
+const SEG = Object.fromEntries(IDX.segments.map(s => [s.id, s]));
+const REG = IDX.regions.filter(r => r.status !== 'collecting');
+const COL = IDX.regions.filter(r => r.status === 'collecting');
+const ALL = IDX.regions;
+const byA2 = {};
+ALL.forEach(r => { (byA2[r.a2] = byA2[r.a2] || []).push(r); });
+const regById = Object.fromEntries(ALL.map(r => [r.id, r]));
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = n => n == null ? '–' : Number(n).toLocaleString(LANG === 'en' ? 'en-GB' : LANG === 'de' ? 'de-DE' : 'cs-CZ');
+const fd = iso => { const [y,m,d] = iso.split('-'); return LANG === 'en' ? `${d}/${m}/${y}` : `${+d}. ${+m}. ${y}`; };
+const geoName = c => (c.n && (c.n[LANG] || c.n.en)) || c.a2;
+const worldNames = Object.fromEntries(WORLD.countries.map(c => [c.a2, c.n]));
+const countryName = a2 => { const n = worldNames[a2]; return n ? (n[LANG] || n.en) : a2; };
+
+function countryStatus(a2) {
+  const rs = byA2[a2]; if (!rs) return 'none';
+  const cl = rs.filter(r => r.level === 'country');
+  if (cl.length) return cl[0].status === 'pilot' ? 'pilot' : (cl[0].status === 'collecting' ? 'collecting' : 'tracked');
+  return 'parent';
+}
+function sum(rs, k) { return rs.reduce((a, r) => a + (r[k] || 0), 0); }
+
+// ---------- texts ----------
+function renderTexts() {
+  const t = T[LANG];
+  document.documentElement.lang = LANG;
+  $('title').textContent = t.title; $('lede').textContent = t.lede;
+  document.querySelectorAll('#lang button').forEach(b => b.classList.toggle('on', b.dataset.l === LANG));
+  const vb = document.querySelectorAll('#view button'); vb[0].textContent = t.world; vb[1].textContent = t.europe;
+  vb.forEach(b => b.classList.toggle('on', b.dataset.v === VIEW));
+  const mb = document.querySelectorAll('#metric button'); mb[0].textContent = t.orgs; mb[1].textContent = t.active31; mb[2].textContent = t.news;
+  mb.forEach(b => b.classList.toggle('on', b.dataset.m === METRIC));
+  $('hint').textContent = t.hint;
+  $('h2cards').textContent = t.h2cards;
+  // KPI strip
+  const upd = REG.map(r => r.updated).sort().slice(-1)[0];
+  $('strip').innerHTML = [
+    [REG.length, t.regions], [fmt(sum(REG,'orgs')), t.orgs], [fmt(sum(REG,'active31')), t.active31], [fmt(sum(REG,'news')), t.news], [COL.length + ' · ' + fmt(sum(COL,'orgs')), `${t.h2collect}: ${t.regions.toLowerCase()} · ${t.orgs.toLowerCase()}`], [fd(upd), `${t.updated} · ${IDX.edition}`]
+  ].map(([v,l]) => `<div class="tile"><div class="v">${v}</div><div class="l">${esc(l)}</div></div>`).join('');
+  $('legend').innerHTML = `<span><i style="background:var(--blue)"></i>${t.legendTracked}</span><span><i style="background:var(--pilot)"></i>${t.legendPilot}</span><span><i style="background:var(--parent)"></i>${t.legendParent}</span><span><i style="background:var(--collect);border:1px dashed var(--blue)"></i>${t.legendCollect}</span><span><i style="background:var(--land)"></i>${t.legendNone}</span><span><i style="border:1px solid var(--esra);background:repeating-linear-gradient(45deg,var(--esra-bg),var(--esra-bg) 2px,var(--esra) 2px,var(--esra) 3px)"></i>${t.legendEsra}</span>`;
+  $('esraLbl').textContent = t.esraToggle;
+  renderCards();
+  $('about').innerHTML = `<h2 style="margin-top:0">${esc(t.aboutH)}</h2>` + t.about.map(p => `<p>${esc(p)}</p>`).join('') + `<p><b>${esc(t.join)}</b></p>`;
+  $('foot').innerHTML = `${esc(t.foot)} · © 2026 Czech National Semiconductor Cluster, z.s. · <a href="https://www.semicz.cz" target="_blank" rel="noopener">semicz.cz</a> · ${esc(t.updated)}: ${fd(IDX.updated)}`;
+}
+
+function segBar(r, h) {
+  const tot = Object.values(r.seg || {}).reduce((a,b)=>a+b,0) || 1;
+  const ents = Object.entries(r.seg || {}).sort((a,b)=>b[1]-a[1]);
+  const bar = `<div class="segs">${ents.map(([k,v]) => `<i style="width:${(v/tot*100).toFixed(1)}%;background:${SEG[k]?SEG[k].c:'#999'}" title="${esc(SEG[k]?SEG[k][LANG]:k)}: ${v}"></i>`).join('')}</div>`;
+  const list = `<div class="seglist sl">${ents.slice(0, h ? 3 : 4).map(([k,v]) => `<i style="background:${SEG[k]?SEG[k].c:'#999'}"></i>${esc(SEG[k]?SEG[k][LANG]:k)} ${v}`).join(' · ')}</div>`;
+  return bar + list;
+}
+
+function renderCards() {
+  const t = T[LANG];
+  $('cards').innerHTML = REG.map(r => {
+    const st = IDX.statuses[r.status][LANG];
+    return `<article class="card ${r.status}">
+      <div class="h"><div><b>${esc(r.name[LANG])}</b><small>${esc(r.host[LANG])}</small></div><span class="code">${r.id}</span></div>
+      <span class="st ${r.status}">${esc(st)}</span>
+      <div class="nums">
+        <div><b>${fmt(r.orgs)}</b><span>${esc(t.orgs)}</span></div>
+        <div><b>${fmt(r.active31)}</b><span>${esc(t.active31s)}</span></div>
+        <div><b>${fmt(r.news)}</b><span>${esc(t.news)}</span></div>
+        <div><b>${fmt(r.events)}</b><span>${esc(t.events)}</span></div>
+        <div><b>${fmt(r.ipcei)}</b><span>${esc(t.ipcei)}</span></div>
+      </div>
+      ${segBar(r, false)}
+      <div class="meta"><span>${esc(t.edition)} ${esc(r.edition)}</span><span>${esc(t.updated)} ${fd(r.updated)}</span>${r.verified ? `<span>${fmt(r.verified)} ${esc(t.verified)}</span>` : ''}</div>
+      ${astLine(r, t)}${esraLine(r, t)}
+      <div class="links">${r.card ? `<a class="btn" href="${esc(r.card)}" target="_blank" rel="noopener">${esc(t.openCard)}</a>` : ''}${r.url ? `<a class="btn${r.card ? ' sec' : ''}" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(t.open)}</a>` : (r.card ? '' : `<span class="btn sec" style="opacity:.6;cursor:default">${esc(t.internal)}</span>`)}${r.repo ? `<a class="btn sec" href="${esc(r.repo)}" target="_blank" rel="noopener">${esc(t.repo)}</a>` : ''}</div>
+    </article>`;
+  }).join('') + (COL.length ? `<div class="card collecting" style="grid-column:1/-1;border-top-color:var(--blue);border-top-style:dashed"><div class="h"><div><b>${esc(t.h2collect)}</b><small>${esc(t.collectNote)}</small></div></div><div class="chips">${COL.map(r => r.url ? `<a class="chip" href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:none"><span class="code">${r.a2}</span>${esc(r.name[LANG])} <b>${fmt(r.orgs)}</b></a>` : `<span class="chip"><span class="code">${r.a2}</span>${esc(r.name[LANG])} <b>${fmt(r.orgs)}</b></span>`).join('')}</div></div>` : '');
+}
+
+// ---------- map ----------
+const svg = $('map'), tip = $('tip'), box = $('mapbox');
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+
+function renderMap() {
+  const G = VIEW === 'world' ? WORLD : EUROPE;
+  $('esraToggle').style.display = VIEW === 'europe' ? '' : 'none';
+  svg.setAttribute('viewBox', `0 0 ${G.W} ${G.H}`);
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  if (VIEW === 'world') el('path', { d: WORLD.sphere, class: 'sphere' }, svg);
+  const land = el('g', { class: 'landg' }, svg);
+  const trackedStates = new Set(ALL.filter(r => r.level === 'state').map(r => r.id));
+  G.countries.forEach(c => {
+    const st = countryStatus(c.a2);
+    if (c.d) { const p = el('path', { d: c.d, class: 'land ' + st + (st !== 'none' ? ' pointer' : ''), 'data-a2': c.a2 }, land); p.__t = { kind: 'country', a2: c.a2 }; }
+    if (c.pt && st !== 'none') { const r = VIEW === 'world' ? 1.8 : 2.6; const q = el('circle', { cx: c.pt[0], cy: c.pt[1], r, class: 'land micro ' + st + (st !== 'none' ? ' pointer' : ''), 'data-a2': c.a2 }, land); q.__t = { kind: 'country', a2: c.a2 }; }
+  });
+  const states = el('g', { class: 'states' }, svg);
+  G.states.filter(s => trackedStates.has(s.id)).forEach(s => {
+    const r = regById[s.id];
+    const p = el('path', { d: s.d, class: 'state ' + r.status + ((r.card || r.url) ? ' pointer' : ''), 'data-id': s.id }, states);
+    p.__t = { kind: 'region', id: s.id };
+  });
+  // ESRA member regions (hatched overlay, Europe view)
+  if (VIEW === 'europe' && ESRA_ON) {
+    let defs = svg.querySelector('defs'); if (!defs) defs = el('defs', {}, svg);
+    const pat = el('pattern', { id: 'esraHatch', patternUnits: 'userSpaceOnUse', width: 5, height: 5, patternTransform: 'rotate(45)' }, defs);
+    el('line', { x1: 0, y1: 0, x2: 0, y2: 5, stroke: 'var(--esra)', 'stroke-width': 1.4 }, pat);
+    const eg = el('g', { class: 'esra-layer' }, svg);
+    ESRA_GEO.regions.forEach(r => { el('path', { d: r.d, class: 'esra', 'data-id': r.id }, eg); });
+  }
+  // badges (count bubbles) are switched off: numbers live in the hover card
+  const badges = [];
+  if (false) {
+  if (VIEW === 'world') {
+    const groups = {};
+    Object.entries(byA2).forEach(([a2, rs]) => {
+      const c = G.countries.find(x => x.a2 === a2); if (!c || !c.c) return;
+      if (rs.length === 1 && rs[0].group) { (groups[rs[0].group] = groups[rs[0].group] || []).push({ r: rs[0], c: c.c }); return; }
+      const status = countryStatus(a2);
+      const v = status === 'collecting' ? sum(rs, 'orgs') : rs.reduce((a, r) => a + (r.status === 'collecting' ? (METRIC === 'orgs' ? r.orgs : 0) : (r[METRIC] || 0)), 0);
+      badges.push({ x: c.c[0], y: c.c[1], v, sub: rs.length > 1 ? `${rs.length}×` : (rs[0].level === 'state' ? rs[0].id.split('-')[1] : ''), pilot: status === 'pilot', collect: status === 'collecting', w: sum(rs,'orgs'), t: rs.length === 1 && rs[0].level === 'country' ? { kind: 'region', id: rs[0].id } : { kind: 'country', a2 } });
+    });
+    Object.entries(groups).forEach(([g, items]) => {
+      const x = items.reduce((a, i) => a + i.c[0], 0) / items.length, y = items.reduce((a, i) => a + i.c[1], 0) / items.length;
+      const rs = items.map(i => i.r);
+      badges.push({ x, y, v: sum(rs, 'orgs'), sub: g, pilot: false, collect: rs[0].status === 'collecting', w: sum(rs, 'orgs'), t: { kind: 'group', group: g } });
+    });
+  } else {
+    ALL.forEach(r => {
+      let c = null;
+      if (r.level === 'state') { const s = G.states.find(x => x.id === r.id); c = s && s.c; }
+      else { const cc = G.countries.find(x => x.a2 === r.a2); c = cc && cc.c; }
+      if (!c) return;
+      badges.push({ x: c[0], y: c[1], v: r.status === 'collecting' ? r.orgs : r[METRIC], sub: r.level === 'state' ? r.id.split('-')[1] : r.a2, pilot: r.status === 'pilot', collect: r.status === 'collecting', w: r.orgs, t: { kind: 'region', id: r.id } });
+    });
+  }
+  }
+}
+
+function drawBadges(bs, G) {
+  const k = Math.max(0.2, svg.getBoundingClientRect().width / G.W) || 1; // px per unit
+  const inv = 1 / k;
+  const g = el('g', { class: 'badges' }, svg);
+  // layout in pixel space
+  const lift = VIEW === 'world' ? -30 : 0;
+  bs.forEach(b => { b.px = b.x * k; b.py = b.y * k; b.text = fmt(b.v); b.bw = 14 + b.text.length * 8.2 + (b.sub ? 6 + b.sub.length * 6 : 0); b.bh = 22; b.ox = 0; b.oy = lift; });
+  bs.sort((a, b) => b.w - a.w);
+  // relaxation: push overlapping badges apart (both axes), weak pull back to the anchor
+  for (let it = 0; it < 120; it++) {
+    let moved = false;
+    for (let i = 0; i < bs.length; i++) for (let j = i + 1; j < bs.length; j++) {
+      const a = bs[i], b = bs[j];
+      const ax = a.px + a.ox, ay = a.py + a.oy, bx = b.px + b.ox, by = b.py + b.oy;
+      const dx = bx - ax, dy = by - ay;
+      const ox = (a.bw + b.bw) / 2 + 6 - Math.abs(dx), oy = a.bh + 6 - Math.abs(dy);
+      if (ox > 0 && oy > 0) {
+        moved = true;
+        // move along the axis that needs the smaller shift, scaled by weight (heavier moves less)
+        const wa = b.w / (a.w + b.w || 1), wb = 1 - wa;
+        if (ox * 0.6 < oy) { const s = Math.sign(dx) || 1; a.ox -= s * ox * wa; b.ox += s * ox * wb; }
+        else { const s = Math.sign(dy) || 1; a.oy -= s * oy * wa; b.oy += s * oy * wb; }
+      }
+    }
+    if (!moved) break;
+  }
+  // keep badges inside the map box
+  const Wpx = G.W * k, Hpx = G.H * k;
+  bs.forEach(b => {
+    const x = b.px + b.ox, y = b.py + b.oy;
+    if (x - b.bw / 2 < 4) b.ox += 4 - (x - b.bw / 2); if (x + b.bw / 2 > Wpx - 4) b.ox -= (x + b.bw / 2) - (Wpx - 4);
+    if (y - b.bh / 2 < 4) b.oy += 4 - (y - b.bh / 2); if (y + b.bh / 2 > Hpx - 4) b.oy -= (y + b.bh / 2) - (Hpx - 4);
+  });
+  bs.forEach(b => {
+    const grp = el('g', { class: 'badge' + (b.pilot ? ' pilot' : '') + (b.collect ? ' collect' : ''), transform: `translate(${b.x.toFixed(1)},${b.y.toFixed(1)}) scale(${inv.toFixed(4)})` }, g);
+    grp.__t = b.t;
+    if (Math.abs(b.oy) > 14 || Math.abs(b.ox) > 8) {
+      el('line', { class: 'lead', x1: 0, y1: 0, x2: b.ox, y2: b.oy + b.bh / 2 }, grp);
+      el('circle', { class: 'dot', r: 2.2, cx: 0, cy: 0 }, grp);
+    }
+    el('rect', { x: b.ox - b.bw / 2, y: b.oy - b.bh / 2, width: b.bw, height: b.bh, rx: 11 }, grp);
+    if (b.sub) {
+      const tw = b.text.length * 8.2, sw = b.sub.length * 6;
+      const total = tw + 6 + sw, start = b.ox - total / 2;
+      const tx = el('text', { x: start + tw / 2, y: b.oy }, grp); tx.textContent = b.text;
+      const sx = el('text', { x: start + tw + 6 + sw / 2, y: b.oy + 1, class: 'sub' }, grp); sx.textContent = b.sub;
+    } else {
+      const tx = el('text', { x: b.ox, y: b.oy }, grp); tx.textContent = b.text;
+    }
+  });
+}
+
+// ---------- tooltip ----------
+function esraLine(r, tr) {
+  const e = r.esra; if (!e) return '';
+  if (r.level === 'state') return e.member ? `<div class="seglist esra">${esc(tr.esraMember)}${e.role === 'initiator' ? ' · ' + esc(tr.esraInit) : ''} (${e.since})</div>` : '';
+  if (!e.n) return `<div class="seglist esra">${esc(tr.esraNone)}</div>`;
+  return `<div class="seglist esra">ESRA: ${e.n} ${esc(e.n === 1 ? tr.esraRegion : tr.esraRegions)} – ${esc(e.regions.join(', '))}</div>`;
+}
+function esraCountry(a2, tr) { const l = (IDX.esra && IDX.esra.byCountry[a2]) || []; return l.length ? `<div class="seglist esra">ESRA: ${l.length} ${esc(l.length === 1 ? tr.esraRegion : tr.esraRegions)} – ${esc(l.join(', '))}</div>` : `<div class="seglist esra">${esc(tr.esraNone)}</div>`; }
+function astLine(r, tr) { return r.ipcei_ast ? `<div class="seglist">${esc(tr.ipceiAst)}: <b>${fmt(r.ipcei_ast)}</b> · ${esc(tr.ipceiAstNote)}</div>` : ''; }
+function tipHtml(t) {
+  const tr = T[LANG];
+  if (t.kind === 'region') {
+    const r = regById[t.id];
+    if (r.status === 'collecting') return `<h4><span>${esc(r.name[LANG])}</span><span class="code">${r.a2}</span></h4>
+      <span class="st collecting">${esc(IDX.statuses.collecting[LANG])}</span>
+      <div class="nums"><span>${esc(tr.orgs)}</span><b>${fmt(r.orgs)}</b>${r.news ? `<span>${esc(tr.news)}</span><b>${fmt(r.news)}</b>` : ''}</div>
+      <div class="seglist">${esc(tr.collectLine(fmt(r.orgs), r.batches))} · ${fd(r.updated)}</div>
+      ${esraLine(r, tr)}
+      <div class="seglist" style="margin-top:4px">${r.url ? esc(tr.previewLine) : esc(tr.noAction)}</div>${(r.card || r.url) ? `<div class="act">${esc(pinned && pinned.touch ? tr.tapAgain : (r.card ? tr.clickCard : tr.clickOpen))} ↗</div>` : ''}`;
+    return `<h4><span>${esc(r.name[LANG])}</span><span class="code">${r.id}</span></h4>
+      <span class="st ${r.status}">${esc(IDX.statuses[r.status][LANG])}</span>
+      <div class="nums"><span>${esc(tr.orgs)}</span><b>${fmt(r.orgs)}</b><span>${esc(tr.active31)}</span><b>${fmt(r.active31)}</b><span>${esc(tr.news)}</span><b>${fmt(r.news)}</b><span>${esc(tr.events)}</span><b>${fmt(r.events)}</b>${r.ipcei ? `<span>${esc(tr.ipcei)}</span><b>${fmt(r.ipcei)}</b>` : ''}</div>
+      ${segBar(r, true)}
+      <div class="seglist" style="margin-top:4px">${esc(tr.edition)} ${esc(r.edition)} · ${esc(tr.updated)} ${fd(r.updated)}</div>
+      ${astLine(r, tr)}${esraLine(r, tr)}
+      ${(r.card || r.url) ? `<div class="act">${esc(pinned && pinned.touch ? tr.tapAgain : (r.card ? tr.clickCard : tr.clickOpen))} ↗</div>` : `<div class="seglist">${esc(tr.internal)}</div>`}`;
+  }
+  const rs = byA2[t.a2];
+  const nm = countryName(t.a2);
+  if (rs && rs.length === 1 && rs[0].level === 'country') return tipHtml({ kind: 'region', id: rs[0].id });
+  if (t.kind === 'group') {
+    const gs = ALL.filter(r => r.group === t.group);
+    return `<h4><span>${esc(gs.map(r => r.name[LANG]).join(' · '))}</span><span class="code">${t.group}</span></h4>
+      <span class="st collecting">${esc(IDX.statuses.collecting[LANG])}</span>
+      <div class="nums"><span>${esc(tr.orgs)}</span><b>${fmt(sum(gs,'orgs'))}</b></div>
+      <div class="sub">${gs.map(r => `<div><span>${esc(r.name[LANG])} <span class="code">${r.a2}</span></span><b>${fmt(r.orgs)}</b></div>`).join('')}</div>
+      <div class="seglist" style="margin-top:4px">${gs[0].url ? esc(tr.previewLine) : esc(tr.noAction)}</div>${gs[0].url ? `<div class="act">${esc(tr.clickOpen)} ↗</div>` : ''}`;
+  }
+  if (!rs) return `<h4><span>${esc(nm)}</span><span class="code">${t.a2}</span></h4><span class="st none">${esc(tr.notCovered)}</span>${esraCountry(t.a2, tr)}<div class="seglist">${esc(tr.join)}</div>`;
+  // parent country with regional radars
+  return `<h4><span>${esc(nm)}</span><span class="code">${t.a2}</span></h4>
+    <span class="st">${esc(tr.parentLine(rs.length))}</span>
+    <div class="nums"><span>${esc(tr.orgs)}</span><b>${fmt(sum(rs,'orgs'))}</b><span>${esc(tr.active31)}</span><b>${fmt(sum(rs,'active31'))}</b><span>${esc(tr.news)}</span><b>${fmt(sum(rs,'news'))}</b></div>
+    <div class="sub">${rs.map(r => `<div><span>${esc(r.name[LANG])} <span class="code">${r.id}</span>${r.status === 'collecting' ? ` <span class="st collecting" style="margin:0">${esc(IDX.statuses.collecting[LANG])}</span>` : ''}</span><b>${fmt(r.status === 'collecting' ? r.orgs : r[METRIC])}</b></div>`).join('')}</div>
+    ${esraCountry(t.a2, tr)}
+    <div class="act">${esc(VIEW === 'world' ? tr.clickZoom : tr.clickOpen)} ↗</div>`;
+}
+function showTip(t, x, y) {
+  tip.innerHTML = tipHtml(t); tip.classList.add('on');
+  const bw = box.clientWidth, bh = box.clientHeight, tw = tip.offsetWidth, th = tip.offsetHeight;
+  let lx = x + 14, ly = y + 14;
+  if (lx + tw > bw - 6) lx = x - tw - 14; if (lx < 6) lx = 6;
+  if (ly + th > bh - 6) ly = y - th - 14; if (ly < 6) ly = 6;
+  tip.style.left = lx + 'px'; tip.style.top = ly + 'px';
+}
+function hideTip() { tip.classList.remove('on'); }
+function targetOf(e) { let n = e.target; while (n && n !== svg) { if (n.__t) return n; n = n.parentNode; } return null; }
+let hov = null;
+svg.addEventListener('pointermove', e => {
+  if (e.pointerType === 'touch') return;
+  const n = targetOf(e);
+  if (hov && hov !== n) { hov.classList.remove('hov'); hov = null; }
+  if (!n) { if (!pinned) hideTip(); return; }
+  if (n.classList.contains('land') || n.classList.contains('state')) { n.classList.add('hov'); hov = n; }
+  const r = box.getBoundingClientRect();
+  pinned = null; showTip(n.__t, e.clientX - r.left, e.clientY - r.top);
+});
+svg.addEventListener('pointerleave', () => { if (hov) { hov.classList.remove('hov'); hov = null; } if (!pinned) hideTip(); });
+function activate(t) {
+  if (t.kind === 'region') { const r = regById[t.id]; const u = r.card || r.url; if (u) window.open(u, '_blank', 'noopener'); return; }
+  if (t.kind === 'group') { const g = ALL.find(r => r.group === t.group && (r.card || r.url)); if (g) window.open(g.card || g.url, '_blank', 'noopener'); return; }
+  if (t.kind === 'country' && byA2[t.a2] && byA2[t.a2].every(r => !r.url)) return;
+  const rs = byA2[t.a2]; if (!rs) return;
+  if (rs.length === 1 && rs[0].level === 'country') { const u = rs[0].card || rs[0].url; if (u) window.open(u, '_blank', 'noopener'); return; }
+  if (VIEW === 'world') { setView('europe'); }
+}
+let lastTouch = 0;
+svg.addEventListener('click', e => {
+  if (Date.now() - lastTouch < 800) return; // handled by the touch path below
+  const n = targetOf(e); if (!n) { pinned = null; hideTip(); return; }
+  activate(n.__t);
+});
+// touch: first tap shows the tooltip, second tap on the same target opens
+svg.addEventListener('pointerup', e => {
+  if (e.pointerType !== 'touch') return;
+  lastTouch = Date.now();
+  const n = targetOf(e); if (!n) { pinned = null; hideTip(); return; }
+  const key = JSON.stringify(n.__t); const r = box.getBoundingClientRect();
+  if (pinned && pinned.key === key) { pinned = null; hideTip(); activate(n.__t); }
+  else { pinned = { key, touch: true }; showTip(n.__t, e.clientX - r.left, e.clientY - r.top); }
+});
+
+// ---------- controls ----------
+function setView(v) { VIEW = v; pinned = null; hideTip(); renderTexts(); renderMap(); pushUrl(); }
+function pushUrl() { const u = new URL(location.href); u.searchParams.set('lang', LANG); u.searchParams.set('view', VIEW); if (METRIC !== 'orgs') u.searchParams.set('metric', METRIC); else u.searchParams.delete('metric'); history.replaceState(null, '', u); }
+$('lang').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; LANG = b.dataset.l; renderTexts(); renderMap(); pushUrl(); });
+$('view').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; setView(b.dataset.v); });
+$('esraChk').addEventListener('change', e => { ESRA_ON = e.target.checked; renderMap(); });
+$('metric').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; METRIC = b.dataset.m; renderTexts(); renderMap(); pushUrl(); });
+$('theme').addEventListener('click', () => { const h = document.documentElement; const n = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; h.setAttribute('data-theme', n); try { localStorage.setItem('gr-theme', n); } catch(e) {} });
+let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(renderMap, 120); });
+
+renderTexts(); renderMap();
+</script>
+</body>
+</html>
