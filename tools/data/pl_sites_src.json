@@ -1,0 +1,1873 @@
+{
+ "read": "2026-11-17",
+ "src": "CORDIS project fact sheets (participants, legal seats)",
+ "note": "Legal seats as listed on CORDIS; HQ = organisation headquarters (operating institutes may be elsewhere). T = third party linked to a participant.",
+ "lines": {
+  "apecs": {
+   "cordis": "101183307",
+   "acronym": "APECS",
+   "parts": [
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "C",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "Ferdinand-Braun-Institut (FBH)",
+     "city": "Berlin",
+     "a2": "DE",
+     "role": "P",
+     "lat": 52.52,
+     "lon": 13.405
+    },
+    {
+     "n": "IHP – Leibniz Institute for High Performance Microelectronics",
+     "city": "Frankfurt (Oder)",
+     "a2": "DE",
+     "role": "P",
+     "lat": 52.347,
+     "lon": 14.551
+    },
+    {
+     "n": "TU Graz",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.071,
+     "lon": 15.439
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "imec",
+     "city": "Leuven",
+     "a2": "BE",
+     "role": "P",
+     "lat": 50.879,
+     "lon": 4.701
+    },
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "FORTH",
+     "city": "Irakleio",
+     "a2": "GR",
+     "role": "P",
+     "lat": 35.339,
+     "lon": 25.144
+    },
+    {
+     "n": "CSIC (HQ)",
+     "city": "Madrid",
+     "a2": "ES",
+     "role": "P",
+     "lat": 40.417,
+     "lon": -3.704
+    },
+    {
+     "n": "INL – International Iberian Nanotechnology Laboratory",
+     "city": "Braga",
+     "a2": "PT",
+     "role": "P",
+     "lat": 41.551,
+     "lon": -8.428
+    }
+   ]
+  },
+  "fames": {
+   "cordis": "101182279",
+   "acronym": "FAMES",
+   "parts": [
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "C",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "imec",
+     "city": "Leuven",
+     "a2": "BE",
+     "role": "P",
+     "lat": 50.879,
+     "lon": 4.701
+    },
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "Warsaw University of Technology (CEZAMAT)",
+     "city": "Warszawa",
+     "a2": "PL",
+     "role": "P",
+     "lat": 52.23,
+     "lon": 21.012
+    },
+    {
+     "n": "University College Cork (Tyndall)",
+     "city": "Cork",
+     "a2": "IE",
+     "role": "P",
+     "lat": 51.898,
+     "lon": -8.473
+    },
+    {
+     "n": "Silicon Austria Labs",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.071,
+     "lon": 15.439
+    },
+    {
+     "n": "UCLouvain",
+     "city": "Louvain-la-Neuve",
+     "a2": "BE",
+     "role": "P",
+     "lat": 50.669,
+     "lon": 4.615
+    },
+    {
+     "n": "Grenoble INP",
+     "city": "Grenoble",
+     "a2": "FR",
+     "role": "P",
+     "lat": 45.188,
+     "lon": 5.725
+    },
+    {
+     "n": "SiNANO Institute",
+     "city": "Grenoble",
+     "a2": "FR",
+     "role": "P",
+     "lat": 45.188,
+     "lon": 5.725
+    },
+    {
+     "n": "Universidad de Granada",
+     "city": "Granada",
+     "a2": "ES",
+     "role": "P",
+     "lat": 37.177,
+     "lon": -3.599
+    }
+   ]
+  },
+  "nanoic": {
+   "cordis": "101183277",
+   "acronym": "NanoIC",
+   "parts": [
+    {
+     "n": "imec",
+     "city": "Leuven",
+     "a2": "BE",
+     "role": "C",
+     "lat": 50.879,
+     "lon": 4.701
+    },
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "University College Cork (Tyndall)",
+     "city": "Cork",
+     "a2": "IE",
+     "role": "P",
+     "lat": 51.898,
+     "lon": -8.473
+    },
+    {
+     "n": "POLITEHNICA Bucureşti (CSSNT)",
+     "city": "Bucureşti",
+     "a2": "RO",
+     "role": "P",
+     "lat": 44.427,
+     "lon": 26.103
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    }
+   ]
+  },
+  "wbg": {
+   "cordis": "101183211",
+   "acronym": "WBG",
+   "parts": [
+    {
+     "n": "CNR (HQ)",
+     "city": "Roma",
+     "a2": "IT",
+     "role": "C",
+     "lat": 41.902,
+     "lon": 12.496
+    },
+    {
+     "n": "Fondazione Bruno Kessler",
+     "city": "Trento",
+     "a2": "IT",
+     "role": "P",
+     "lat": 46.07,
+     "lon": 11.121
+    },
+    {
+     "n": "CINI",
+     "city": "Bologna",
+     "a2": "IT",
+     "role": "T",
+     "lat": 44.494,
+     "lon": 11.343
+    },
+    {
+     "n": "Università di Catania",
+     "city": "Catania",
+     "a2": "IT",
+     "role": "T",
+     "lat": 37.507,
+     "lon": 15.083
+    },
+    {
+     "n": "Università di Padova",
+     "city": "Padova",
+     "a2": "IT",
+     "role": "T",
+     "lat": 45.407,
+     "lon": 11.876
+    },
+    {
+     "n": "Università di Pisa",
+     "city": "Pisa",
+     "a2": "IT",
+     "role": "T",
+     "lat": 43.716,
+     "lon": 10.397
+    },
+    {
+     "n": "Politecnico di Torino",
+     "city": "Torino",
+     "a2": "IT",
+     "role": "T",
+     "lat": 45.07,
+     "lon": 7.687
+    },
+    {
+     "n": "Politecnico di Milano",
+     "city": "Milano",
+     "a2": "IT",
+     "role": "T",
+     "lat": 45.464,
+     "lon": 9.19
+    },
+    {
+     "n": "Università di Bologna",
+     "city": "Bologna",
+     "a2": "IT",
+     "role": "T",
+     "lat": 44.494,
+     "lon": 11.343
+    },
+    {
+     "n": "Università di Modena e Reggio Emilia",
+     "city": "Modena",
+     "a2": "IT",
+     "role": "T",
+     "lat": 44.647,
+     "lon": 10.925
+    },
+    {
+     "n": "Università della Calabria",
+     "city": "Arcavacata di Rende",
+     "a2": "IT",
+     "role": "P",
+     "lat": 39.357,
+     "lon": 16.226
+    },
+    {
+     "n": "CIDIS – Centro Italiano Design Circuiti Integrati",
+     "city": "Pavia",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.185,
+     "lon": 9.158
+    },
+    {
+     "n": "KTH",
+     "city": "Stockholm",
+     "a2": "SE",
+     "role": "P",
+     "lat": 59.329,
+     "lon": 18.069
+    },
+    {
+     "n": "Linköping University",
+     "city": "Linköping",
+     "a2": "SE",
+     "role": "P",
+     "lat": 58.411,
+     "lon": 15.622
+    },
+    {
+     "n": "Lund University",
+     "city": "Lund",
+     "a2": "SE",
+     "role": "P",
+     "lat": 55.705,
+     "lon": 13.191
+    },
+    {
+     "n": "Chalmers",
+     "city": "Göteborg",
+     "a2": "SE",
+     "role": "P",
+     "lat": 57.709,
+     "lon": 11.975
+    },
+    {
+     "n": "Łukasiewicz – IMiF",
+     "city": "Warszawa",
+     "a2": "PL",
+     "role": "P",
+     "lat": 52.23,
+     "lon": 21.012
+    },
+    {
+     "n": "Institute of High Pressure Physics PAS (Unipress)",
+     "city": "Warszawa",
+     "a2": "PL",
+     "role": "P",
+     "lat": 52.23,
+     "lon": 21.012
+    },
+    {
+     "n": "Tampere University",
+     "city": "Tampere",
+     "a2": "FI",
+     "role": "P",
+     "lat": 61.498,
+     "lon": 23.761
+    },
+    {
+     "n": "Silicon Austria Labs",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.071,
+     "lon": 15.439
+    },
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "Chip4Power consortium",
+     "city": "Catania",
+     "a2": "IT",
+     "role": "P",
+     "lat": 37.507,
+     "lon": 15.083
+    }
+   ]
+  },
+  "pixeurope": {
+   "cordis": "101213727",
+   "acronym": "PIXEurope",
+   "parts": [
+    {
+     "n": "ICFO",
+     "city": "Castelldefels",
+     "a2": "ES",
+     "role": "C",
+     "lat": 41.28,
+     "lon": 1.977
+    },
+    {
+     "n": "University College Cork (Tyndall)",
+     "city": "Cork",
+     "a2": "IE",
+     "role": "P",
+     "lat": 51.898,
+     "lon": -8.473
+    },
+    {
+     "n": "TU Eindhoven",
+     "city": "Eindhoven",
+     "a2": "NL",
+     "role": "P",
+     "lat": 51.441,
+     "lon": 5.47
+    },
+    {
+     "n": "Universitat Politècnica de València",
+     "city": "Valencia",
+     "a2": "ES",
+     "role": "P",
+     "lat": 39.47,
+     "lon": -0.377
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "imec",
+     "city": "Leuven",
+     "a2": "BE",
+     "role": "P",
+     "lat": 50.879,
+     "lon": 4.701
+    },
+    {
+     "n": "CSIC (HQ)",
+     "city": "Madrid",
+     "a2": "ES",
+     "role": "P",
+     "lat": 40.417,
+     "lon": -3.704
+    },
+    {
+     "n": "TNO",
+     "city": "Den Haag",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.08,
+     "lon": 4.311
+    },
+    {
+     "n": "University of Twente",
+     "city": "Enschede",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.221,
+     "lon": 6.894
+    },
+    {
+     "n": "Ghent University",
+     "city": "Gent",
+     "a2": "BE",
+     "role": "P",
+     "lat": 51.054,
+     "lon": 3.725
+    },
+    {
+     "n": "Universidad de Vigo",
+     "city": "Vigo",
+     "a2": "ES",
+     "role": "P",
+     "lat": 42.24,
+     "lon": -8.721
+    },
+    {
+     "n": "Instituto de Telecomunicações",
+     "city": "Aveiro",
+     "a2": "PT",
+     "role": "P",
+     "lat": 40.641,
+     "lon": -8.654
+    },
+    {
+     "n": "Warsaw University of Technology (CEZAMAT)",
+     "city": "Warszawa",
+     "a2": "PL",
+     "role": "P",
+     "lat": 52.23,
+     "lon": 21.012
+    },
+    {
+     "n": "Silicon Austria Labs",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.071,
+     "lon": 15.439
+    },
+    {
+     "n": "Politecnico di Milano",
+     "city": "Milano",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.464,
+     "lon": 9.19
+    },
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "Fondazione Bruno Kessler",
+     "city": "Trento",
+     "a2": "IT",
+     "role": "P",
+     "lat": 46.07,
+     "lon": 11.121
+    },
+    {
+     "n": "University of Cambridge",
+     "city": "Cambridge",
+     "a2": "UK",
+     "role": "P",
+     "lat": 52.205,
+     "lon": 0.119
+    },
+    {
+     "n": "University of Southampton",
+     "city": "Southampton",
+     "a2": "UK",
+     "role": "P",
+     "lat": 50.91,
+     "lon": -1.404
+    },
+    {
+     "n": "IMDEA Networks",
+     "city": "Leganés",
+     "a2": "ES",
+     "role": "P",
+     "lat": 40.328,
+     "lon": -3.764
+    }
+   ]
+  },
+  "champ-ion": {
+   "cordis": "101288915",
+   "acronym": "CHAMP-ION SGA1",
+   "parts": [
+    {
+     "n": "Silicon Austria Labs",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "C",
+     "lat": 47.071,
+     "lon": 15.439
+    },
+    {
+     "n": "Infineon Technologies Austria",
+     "city": "Villach",
+     "a2": "AT",
+     "role": "P",
+     "lat": 46.614,
+     "lon": 13.846
+    },
+    {
+     "n": "Infineon Technologies AG",
+     "city": "Neubiberg",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.077,
+     "lon": 11.661
+    },
+    {
+     "n": "Infineon Technologies Dresden",
+     "city": "Dresden",
+     "a2": "DE",
+     "role": "P",
+     "lat": 51.05,
+     "lon": 13.738
+    },
+    {
+     "n": "Alpine Quantum Technologies",
+     "city": "Innsbruck",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.269,
+     "lon": 11.404
+    },
+    {
+     "n": "Universität Innsbruck",
+     "city": "Innsbruck",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.269,
+     "lon": 11.404
+    },
+    {
+     "n": "ParityQC",
+     "city": "Innsbruck",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.269,
+     "lon": 11.404
+    },
+    {
+     "n": "INL – International Iberian Nanotechnology Laboratory",
+     "city": "Braga",
+     "a2": "PT",
+     "role": "P",
+     "lat": 41.551,
+     "lon": -8.428
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "Johannes Gutenberg-Universität Mainz",
+     "city": "Mainz",
+     "a2": "DE",
+     "role": "P",
+     "lat": 49.993,
+     "lon": 8.247
+    },
+    {
+     "n": "neQxt",
+     "city": "Erlenbach am Main",
+     "a2": "DE",
+     "role": "P",
+     "lat": 49.804,
+     "lon": 9.165
+    },
+    {
+     "n": "Universität Siegen",
+     "city": "Siegen",
+     "a2": "DE",
+     "role": "P",
+     "lat": 50.874,
+     "lon": 8.024
+    },
+    {
+     "n": "eleQtron",
+     "city": "Siegen",
+     "a2": "DE",
+     "role": "P",
+     "lat": 50.874,
+     "lon": 8.024
+    },
+    {
+     "n": "Leibniz Universität Hannover",
+     "city": "Hannover",
+     "a2": "DE",
+     "role": "P",
+     "lat": 52.376,
+     "lon": 9.732
+    },
+    {
+     "n": "QUDORA Technologies",
+     "city": "Braunschweig",
+     "a2": "DE",
+     "role": "P",
+     "lat": 52.269,
+     "lon": 10.521
+    },
+    {
+     "n": "PTB",
+     "city": "Braunschweig",
+     "a2": "DE",
+     "role": "P",
+     "lat": 52.269,
+     "lon": 10.521
+    },
+    {
+     "n": "INRiM",
+     "city": "Torino",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.07,
+     "lon": 7.687
+    },
+    {
+     "n": "Università di Padova",
+     "city": "Padova",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.407,
+     "lon": 11.876
+    },
+    {
+     "n": "Palacký University Olomouc",
+     "city": "Olomouc",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 49.594,
+     "lon": 17.251
+    },
+    {
+     "n": "Institute of Scientific Instruments CAS",
+     "city": "Brno",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 49.195,
+     "lon": 16.608
+    },
+    {
+     "n": "AMIRES",
+     "city": "Praha",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 50.076,
+     "lon": 14.438
+    }
+   ]
+  },
+  "supreme": {
+   "cordis": "101286304",
+   "acronym": "SUPREME 1",
+   "parts": [
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "C",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "IQM Finland",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "Arctic Instruments",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "QuantWare",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "Single Quantum",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "TNO",
+     "city": "Den Haag",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.08,
+     "lon": 4.311
+    },
+    {
+     "n": "QphoX",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "TU Delft",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "Bayerische Akademie der Wissenschaften (WMI)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "Infineon Technologies AG",
+     "city": "Neubiberg",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.077,
+     "lon": 11.661
+    },
+    {
+     "n": "Peak Quantum",
+     "city": "Garching",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.249,
+     "lon": 11.651
+    },
+    {
+     "n": "Max-Planck-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "Leibniz IPHT",
+     "city": "Jena",
+     "a2": "DE",
+     "role": "P",
+     "lat": 50.927,
+     "lon": 11.586
+    },
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "Silent Waves",
+     "city": "Grenoble",
+     "a2": "FR",
+     "role": "P",
+     "lat": 45.188,
+     "lon": 5.725
+    },
+    {
+     "n": "Alice & Bob",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "AMIRES",
+     "city": "Praha",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 50.076,
+     "lon": 14.438
+    },
+    {
+     "n": "Università di Napoli Federico II",
+     "city": "Napoli",
+     "a2": "IT",
+     "role": "P",
+     "lat": 40.852,
+     "lon": 14.268
+    },
+    {
+     "n": "Fondazione Bruno Kessler",
+     "city": "Trento",
+     "a2": "IT",
+     "role": "P",
+     "lat": 46.07,
+     "lon": 11.121
+    },
+    {
+     "n": "Qilimanjaro Quantum Tech",
+     "city": "Barcelona",
+     "a2": "ES",
+     "role": "P",
+     "lat": 41.387,
+     "lon": 2.17
+    },
+    {
+     "n": "IFAE",
+     "city": "Cerdanyola del Vallès",
+     "a2": "ES",
+     "role": "P",
+     "lat": 41.491,
+     "lon": 2.141
+    },
+    {
+     "n": "Silicon Austria Labs",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.071,
+     "lon": 15.439
+    }
+   ]
+  },
+  "spins": {
+   "cordis": "101288553",
+   "acronym": "SPINS SGA1",
+   "parts": [
+    {
+     "n": "imec",
+     "city": "Leuven",
+     "a2": "BE",
+     "role": "C",
+     "lat": 50.879,
+     "lon": 4.701
+    },
+    {
+     "n": "AMIRES",
+     "city": "Praha",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 50.076,
+     "lon": 14.438
+    },
+    {
+     "n": "ARQUE Systems",
+     "city": "Aachen",
+     "a2": "DE",
+     "role": "P",
+     "lat": 50.776,
+     "lon": 6.084
+    },
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "C12 Quantum Electronics",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "CSIC (HQ)",
+     "city": "Madrid",
+     "a2": "ES",
+     "role": "P",
+     "lat": 40.417,
+     "lon": -3.704
+    },
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "Forschungszentrum Jülich",
+     "city": "Jülich",
+     "a2": "DE",
+     "role": "P",
+     "lat": 50.922,
+     "lon": 6.361
+    },
+    {
+     "n": "Groove Quantum",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "IHP – Leibniz Institute for High Performance Microelectronics",
+     "city": "Frankfurt (Oder)",
+     "a2": "DE",
+     "role": "P",
+     "lat": 52.347,
+     "lon": 14.551
+    },
+    {
+     "n": "Infineon Technologies Dresden",
+     "city": "Dresden",
+     "a2": "DE",
+     "role": "P",
+     "lat": 51.05,
+     "lon": 13.738
+    },
+    {
+     "n": "INL – International Iberian Nanotechnology Laboratory",
+     "city": "Braga",
+     "a2": "PT",
+     "role": "P",
+     "lat": 41.551,
+     "lon": -8.428
+    },
+    {
+     "n": "University of Jyväskylä",
+     "city": "Jyväskylä",
+     "a2": "FI",
+     "role": "P",
+     "lat": 62.242,
+     "lon": 25.747
+    },
+    {
+     "n": "Cuantomoción",
+     "city": "Donostia",
+     "a2": "ES",
+     "role": "P",
+     "lat": 43.318,
+     "lon": -1.981
+    },
+    {
+     "n": "Quobly",
+     "city": "Grenoble",
+     "a2": "FR",
+     "role": "P",
+     "lat": 45.188,
+     "lon": 5.725
+    },
+    {
+     "n": "SemiQon",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "Siltronic",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "TNO",
+     "city": "Den Haag",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.08,
+     "lon": 4.311
+    },
+    {
+     "n": "TU Delft",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "NQSTI",
+     "city": "Roma",
+     "a2": "IT",
+     "role": "P",
+     "lat": 41.902,
+     "lon": 12.496
+    },
+    {
+     "n": "PQI – Portuguese Quantum Institute",
+     "city": "Lisboa",
+     "a2": "PT",
+     "role": "P",
+     "lat": 38.722,
+     "lon": -9.139
+    },
+    {
+     "n": "Universität Regensburg",
+     "city": "Regensburg",
+     "a2": "DE",
+     "role": "P",
+     "lat": 49.013,
+     "lon": 12.102
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    }
+   ]
+  },
+  "direqt": {
+   "cordis": "101291215",
+   "acronym": "DIREQT",
+   "parts": [
+    {
+     "n": "CNR (HQ)",
+     "city": "Roma",
+     "a2": "IT",
+     "role": "C",
+     "lat": 41.902,
+     "lon": 12.496
+    },
+    {
+     "n": "Università di Torino",
+     "city": "Torino",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.07,
+     "lon": 7.687
+    },
+    {
+     "n": "INRiM",
+     "city": "Torino",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.07,
+     "lon": 7.687
+    },
+    {
+     "n": "Fondazione Bruno Kessler",
+     "city": "Trento",
+     "a2": "IT",
+     "role": "P",
+     "lat": 46.07,
+     "lon": 11.121
+    },
+    {
+     "n": "Thales",
+     "city": "Meudon",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.812,
+     "lon": 2.238
+    },
+    {
+     "n": "HiQuTe Diamond",
+     "city": "Boulogne-Billancourt",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.835,
+     "lon": 2.24
+    },
+    {
+     "n": "Diamfab",
+     "city": "Grenoble",
+     "a2": "FR",
+     "role": "P",
+     "lat": 45.188,
+     "lon": 5.725
+    },
+    {
+     "n": "Bestek",
+     "city": "Marolles-en-Hurepoix",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.562,
+     "lon": 2.299
+    },
+    {
+     "n": "CNRS (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "Tecnalia",
+     "city": "Donostia",
+     "a2": "ES",
+     "role": "P",
+     "lat": 43.318,
+     "lon": -1.981
+    },
+    {
+     "n": "Universidad Carlos III de Madrid",
+     "city": "Getafe",
+     "a2": "ES",
+     "role": "P",
+     "lat": 40.306,
+     "lon": -3.733
+    },
+    {
+     "n": "IMDEA Nanociencia",
+     "city": "Madrid",
+     "a2": "ES",
+     "role": "P",
+     "lat": 40.417,
+     "lon": -3.704
+    },
+    {
+     "n": "Arquimea Research Center",
+     "city": "San Cristóbal de La Laguna",
+     "a2": "ES",
+     "role": "P",
+     "lat": 28.487,
+     "lon": -16.316
+    },
+    {
+     "n": "Universidad de Murcia",
+     "city": "Murcia",
+     "a2": "ES",
+     "role": "P",
+     "lat": 37.992,
+     "lon": -1.131
+    },
+    {
+     "n": "Quantum Brilliance",
+     "city": "Stuttgart",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.776,
+     "lon": 9.182
+    },
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "Diatope",
+     "city": "Ummendorf",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.057,
+     "lon": 9.835
+    },
+    {
+     "n": "Silicon Austria Labs",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.071,
+     "lon": 15.439
+    },
+    {
+     "n": "D. Swarovski",
+     "city": "Wattens",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.294,
+     "lon": 11.591
+    },
+    {
+     "n": "PQI – Portuguese Quantum Institute",
+     "city": "Lisboa",
+     "a2": "PT",
+     "role": "P",
+     "lat": 38.722,
+     "lon": -9.139
+    },
+    {
+     "n": "INL – International Iberian Nanotechnology Laboratory",
+     "city": "Braga",
+     "a2": "PT",
+     "role": "P",
+     "lat": 41.551,
+     "lon": -8.428
+    },
+    {
+     "n": "DTU",
+     "city": "Kongens Lyngby",
+     "a2": "DK",
+     "role": "P",
+     "lat": 55.771,
+     "lon": 12.504
+    },
+    {
+     "n": "Wrocław University of Science and Technology",
+     "city": "Wrocław",
+     "a2": "PL",
+     "role": "P",
+     "lat": 51.108,
+     "lon": 17.038
+    },
+    {
+     "n": "Hasselt University",
+     "city": "Hasselt",
+     "a2": "BE",
+     "role": "P",
+     "lat": 50.931,
+     "lon": 5.338
+    },
+    {
+     "n": "Czech Technical University in Prague",
+     "city": "Praha",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 50.076,
+     "lon": 14.438
+    },
+    {
+     "n": "AMIRES",
+     "city": "Praha",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 50.076,
+     "lon": 14.438
+    },
+    {
+     "n": "Hebrew University of Jerusalem",
+     "city": "Jerusalem",
+     "a2": "IL",
+     "role": "P",
+     "lat": 31.769,
+     "lon": 35.216
+    },
+    {
+     "n": "Weizmann Institute of Science",
+     "city": "Rehovot",
+     "a2": "IL",
+     "role": "P",
+     "lat": 31.895,
+     "lon": 34.808
+    },
+    {
+     "n": "Quantum Transistors Technology",
+     "city": "Binyamina",
+     "a2": "IL",
+     "role": "P",
+     "lat": 32.518,
+     "lon": 34.949
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "Jožef Stefan Institute",
+     "city": "Ljubljana",
+     "a2": "SI",
+     "role": "P",
+     "lat": 46.056,
+     "lon": 14.506
+    }
+   ]
+  },
+  "p4q": {
+   "cordis": "101291189",
+   "acronym": "P4Q",
+   "parts": [
+    {
+     "n": "University of Twente",
+     "city": "Enschede",
+     "a2": "NL",
+     "role": "C",
+     "lat": 52.221,
+     "lon": 6.894
+    },
+    {
+     "n": "AIT Austrian Institute of Technology",
+     "city": "Wien",
+     "a2": "AT",
+     "role": "P",
+     "lat": 48.208,
+     "lon": 16.372
+    },
+    {
+     "n": "Aluvia Photonics",
+     "city": "Enschede",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.221,
+     "lon": 6.894
+    },
+    {
+     "n": "AMIRES",
+     "city": "Praha",
+     "a2": "CZ",
+     "role": "P",
+     "lat": 50.076,
+     "lon": 14.438
+    },
+    {
+     "n": "Alpine Quantum Technologies",
+     "city": "Innsbruck",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.269,
+     "lon": 11.404
+    },
+    {
+     "n": "CNRS (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "CEA (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "Delft Networks",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "ICFO",
+     "city": "Castelldefels",
+     "a2": "ES",
+     "role": "P",
+     "lat": 41.28,
+     "lon": 1.977
+    },
+    {
+     "n": "imec",
+     "city": "Leuven",
+     "a2": "BE",
+     "role": "P",
+     "lat": 50.879,
+     "lon": 4.701
+    },
+    {
+     "n": "IMS CHIPS",
+     "city": "Stuttgart",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.776,
+     "lon": 9.182
+    },
+    {
+     "n": "Leonardo",
+     "city": "Roma",
+     "a2": "IT",
+     "role": "P",
+     "lat": 41.902,
+     "lon": 12.496
+    },
+    {
+     "n": "Ligentec France",
+     "city": "Corbeil-Essonnes",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.614,
+     "lon": 2.482
+    },
+    {
+     "n": "LioniX International",
+     "city": "Enschede",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.221,
+     "lon": 6.894
+    },
+    {
+     "n": "New Origin",
+     "city": "Enschede",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.221,
+     "lon": 6.894
+    },
+    {
+     "n": "planqc",
+     "city": "Garching",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.249,
+     "lon": 11.651
+    },
+    {
+     "n": "Falqon Systems",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "QphoX",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "QuiX Quantum",
+     "city": "Enschede",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.221,
+     "lon": 6.894
+    },
+    {
+     "n": "SINTEF",
+     "city": "Trondheim",
+     "a2": "NO",
+     "role": "P",
+     "lat": 63.43,
+     "lon": 10.395
+    },
+    {
+     "n": "Sparrow Quantum",
+     "city": "Frederiksberg",
+     "a2": "DK",
+     "role": "P",
+     "lat": 55.679,
+     "lon": 12.531
+    },
+    {
+     "n": "Thales Alenia Space France",
+     "city": "Toulouse",
+     "a2": "FR",
+     "role": "P",
+     "lat": 43.605,
+     "lon": 1.444
+    },
+    {
+     "n": "Thales",
+     "city": "Meudon",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.812,
+     "lon": 2.238
+    },
+    {
+     "n": "TNO",
+     "city": "Den Haag",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.08,
+     "lon": 4.311
+    },
+    {
+     "n": "TU Delft",
+     "city": "Delft",
+     "a2": "NL",
+     "role": "P",
+     "lat": 52.012,
+     "lon": 4.357
+    },
+    {
+     "n": "TU Eindhoven",
+     "city": "Eindhoven",
+     "a2": "NL",
+     "role": "P",
+     "lat": 51.441,
+     "lon": 5.47
+    },
+    {
+     "n": "University College Cork (Tyndall)",
+     "city": "Cork",
+     "a2": "IE",
+     "role": "P",
+     "lat": 51.898,
+     "lon": -8.473
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "Quandela",
+     "city": "Massy",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.731,
+     "lon": 2.271
+    }
+   ]
+  },
+  "q-planet": {
+   "cordis": "101291743",
+   "acronym": "Q-PLANET SGA1",
+   "parts": [
+    {
+     "n": "Pasqal",
+     "city": "Palaiseau",
+     "a2": "FR",
+     "role": "C",
+     "lat": 48.715,
+     "lon": 2.246
+    },
+    {
+     "n": "Université de Strasbourg",
+     "city": "Strasbourg",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.573,
+     "lon": 7.752
+    },
+    {
+     "n": "QPerfect",
+     "city": "Strasbourg",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.573,
+     "lon": 7.752
+    },
+    {
+     "n": "III-V Lab",
+     "city": "Palaiseau",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.715,
+     "lon": 2.246
+    },
+    {
+     "n": "CNRS (HQ)",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "University of Stuttgart",
+     "city": "Stuttgart",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.776,
+     "lon": 9.182
+    },
+    {
+     "n": "Fraunhofer-Gesellschaft (HQ)",
+     "city": "München",
+     "a2": "DE",
+     "role": "P",
+     "lat": 48.137,
+     "lon": 11.575
+    },
+    {
+     "n": "DTU",
+     "city": "Kongens Lyngby",
+     "a2": "DK",
+     "role": "P",
+     "lat": 55.771,
+     "lon": 12.504
+    },
+    {
+     "n": "INRiM",
+     "city": "Torino",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.07,
+     "lon": 7.687
+    },
+    {
+     "n": "SAES Getters",
+     "city": "Lainate",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.571,
+     "lon": 9.027
+    },
+    {
+     "n": "Politecnico di Milano",
+     "city": "Milano",
+     "a2": "IT",
+     "role": "P",
+     "lat": 45.464,
+     "lon": 9.19
+    },
+    {
+     "n": "CSIC (HQ)",
+     "city": "Madrid",
+     "a2": "ES",
+     "role": "P",
+     "lat": 40.417,
+     "lon": -3.704
+    },
+    {
+     "n": "ICFO",
+     "city": "Castelldefels",
+     "a2": "ES",
+     "role": "P",
+     "lat": 41.28,
+     "lon": 1.977
+    },
+    {
+     "n": "PQI – Portuguese Quantum Institute",
+     "city": "Lisboa",
+     "a2": "PT",
+     "role": "P",
+     "lat": 38.722,
+     "lon": -9.139
+    },
+    {
+     "n": "Svenska Laserfabriken",
+     "city": "Rimbo",
+     "a2": "SE",
+     "role": "P",
+     "lat": 59.744,
+     "lon": 18.364
+    },
+    {
+     "n": "Welinq",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "University of Warsaw",
+     "city": "Warszawa",
+     "a2": "PL",
+     "role": "P",
+     "lat": 52.23,
+     "lon": 21.012
+    },
+    {
+     "n": "TopGaN",
+     "city": "Warszawa",
+     "a2": "PL",
+     "role": "P",
+     "lat": 52.23,
+     "lon": 21.012
+    },
+    {
+     "n": "Institute of High Pressure Physics PAS (Unipress)",
+     "city": "Warszawa",
+     "a2": "PL",
+     "role": "P",
+     "lat": 52.23,
+     "lon": 21.012
+    },
+    {
+     "n": "Qpurpose",
+     "city": "Odense",
+     "a2": "DK",
+     "role": "P",
+     "lat": 55.396,
+     "lon": 10.389
+    },
+    {
+     "n": "Safran Electronics & Defense",
+     "city": "Paris",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.857,
+     "lon": 2.352
+    },
+    {
+     "n": "Centrale Lille",
+     "city": "Villeneuve-d’Ascq",
+     "a2": "FR",
+     "role": "P",
+     "lat": 50.623,
+     "lon": 3.145
+    },
+    {
+     "n": "ONERA",
+     "city": "Palaiseau",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.715,
+     "lon": 2.246
+    },
+    {
+     "n": "iQrypto",
+     "city": "Mons",
+     "a2": "BE",
+     "role": "P",
+     "lat": 50.454,
+     "lon": 3.952
+    },
+    {
+     "n": "CNR (HQ)",
+     "city": "Roma",
+     "a2": "IT",
+     "role": "P",
+     "lat": 41.902,
+     "lon": 12.496
+    },
+    {
+     "n": "Thales",
+     "city": "Meudon",
+     "a2": "FR",
+     "role": "P",
+     "lat": 48.812,
+     "lon": 2.238
+    },
+    {
+     "n": "VTT",
+     "city": "Espoo",
+     "a2": "FI",
+     "role": "P",
+     "lat": 60.205,
+     "lon": 24.656
+    },
+    {
+     "n": "Silicon Austria Labs",
+     "city": "Graz",
+     "a2": "AT",
+     "role": "P",
+     "lat": 47.071,
+     "lon": 15.439
+    }
+   ]
+  }
+ }
+}
