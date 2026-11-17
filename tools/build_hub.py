@@ -9,16 +9,31 @@ BRAND = 'Global and EU Semiconductor Value Chain Radar'
 CARDS = {'DE-SN': 'https://smarterinstruments.github.io/sn/'}          # regions with a published country card
 META = {'DE-SN': '/home/claude/saxony-radar/meta.json'}                 # per-region meta.json written by the radar builds (local path or URL)
 
+# ESRA – European Semiconductor Regions Alliance, member regions per country (esra-org.eu, read 17 Nov 2026; 44 regions)
+ESRA_URL = 'https://www.esra-org.eu/'
+ESRA = {
+ 'DE': ['Baden-Württemberg', 'Bavaria', 'Hamburg', 'Hesse', 'Lower Saxony', 'North Rhine-Westphalia', 'Saarland', 'Saxony', 'Saxony-Anhalt', 'Schleswig-Holstein', 'Thuringia'],
+ 'ES': ['Andalusia', 'Basque Country', 'Catalonia', 'Madrid', 'Valencia'],
+ 'FR': ['Auvergne-Rhône-Alpes', 'Île-de-France', 'Occitanie', 'Région SUD – Provence-Alpes-Côte d\'Azur'],
+ 'NL': ['Flevoland', 'Gelderland', 'North Brabant', 'Overijssel'],
+ 'IT': ['Lombardy', 'Piemonte', 'Sicily'], 'CZ': ['South Moravia', 'Pilsen', 'Zlín'], 'FI': ['Helsinki', 'Tampere', 'Oulu'],
+ 'AT': ['Carinthia', 'Styria'], 'PT': ['Centro', 'Norte'], 'SE': ['Östergötland', 'Skåne'],
+ 'BE': ['Flanders'], 'SK': ['Bratislava'], 'PL': ['Pomerania'], 'IE': ['Ireland'], 'GB': ['Wales'],
+}
+ESRA_STATE = {'DE-SN': {'member': True, 'since': 2023, 'role': 'initiator'}, 'DE-BY': {'member': True, 'since': 2023}, 'DE-BW': {'member': True, 'since': 2023}}
 idx = json.loads((SRC / 'global_index.json').read_text(encoding='utf-8'))
+idx['esra'] = {'url': ESRA_URL, 'total': sum(len(v) for v in ESRA.values()), 'chair2026': 'Catalonia', 'byCountry': ESRA}
 for r in idx['regions']:
     u = r.get('url') or ''
     if 'claude.ai' in u or not r.get('public'):            # private artifacts / internal previews: numbers only
         r['url'] = None; r.pop('preview', None)
     r['card'] = CARDS.get(r['id'])
+    if r.get('level') == 'state': r['esra'] = ESRA_STATE.get(r['id'], {'member': False})
+    else: r['esra'] = {'n': len(ESRA.get(r['a2'], [])), 'regions': ESRA.get(r['a2'], [])}
     m = META.get(r['id'])
     if m:                                                   # refresh counts from the radar's own meta.json
         mj = json.loads(pathlib.Path(m).read_text(encoding='utf-8')) if not m.startswith('http') else json.load(urllib.request.urlopen(m))
-        for k in ('edition', 'updated', 'orgs', 'verified', 'active31', 'news', 'events', 'ipcei', 'seg'):
+        for k in ('edition', 'updated', 'orgs', 'verified', 'active31', 'news', 'events', 'ipcei', 'ipcei_ast', 'chipsact', 'seg'):
             if k in mj: r[k] = mj[k]
         if mj.get('url'): r['url'] = mj['url']
 idx['brand'] = BRAND
@@ -75,5 +90,45 @@ T = T.replace("let VIEW = q.get('view') === 'europe' ? 'europe' : 'world';", "le
 assert "window.innerWidth < 640" in T
 T = T.replace('<div class="kicker">CNSC · Global Value Chain Radar</div>', '<div class="kicker">Alpha · weekly editions · public sources only</div>')
 assert 'kicker">Alpha' in T
+# --- ESRA + IPCEI AST lines in tooltips and region cards ---
+T = T.replace("function tipHtml(t) {", """function esraLine(r, tr) {
+  const e = r.esra; if (!e) return '';
+  if (r.level === 'state') return e.member ? `<div class="seglist esra">${esc(tr.esraMember)}${e.role === 'initiator' ? ' · ' + esc(tr.esraInit) : ''} (${e.since})</div>` : '';
+  if (!e.n) return `<div class="seglist esra">${esc(tr.esraNone)}</div>`;
+  return `<div class="seglist esra">ESRA: ${e.n} ${esc(e.n === 1 ? tr.esraRegion : tr.esraRegions)} – ${esc(e.regions.join(', '))}</div>`;
+}
+function esraCountry(a2, tr) { const l = (IDX.esra && IDX.esra.byCountry[a2]) || []; return l.length ? `<div class="seglist esra">ESRA: ${l.length} ${esc(l.length === 1 ? tr.esraRegion : tr.esraRegions)} – ${esc(l.join(', '))}</div>` : `<div class="seglist esra">${esc(tr.esraNone)}</div>`; }
+function astLine(r, tr) { return r.ipcei_ast ? `<div class="seglist">${esc(tr.ipceiAst)}: <b>${fmt(r.ipcei_ast)}</b> · ${esc(tr.ipceiAstNote)}</div>` : ''; }
+function tipHtml(t) {""", 1)
+# live/preview region tip: after the edition line
+T = T.replace("""      <div class="seglist" style="margin-top:4px">${esc(tr.edition)} ${esc(r.edition)} · ${esc(tr.updated)} ${fd(r.updated)}</div>
+      <div class="act">""", """      <div class="seglist" style="margin-top:4px">${esc(tr.edition)} ${esc(r.edition)} · ${esc(tr.updated)} ${fd(r.updated)}</div>
+      ${astLine(r, tr)}${esraLine(r, tr)}
+      <div class="act">""", 1)
+# collecting region tip
+T = T.replace("""      <div class="seglist">${esc(tr.collectLine(fmt(r.orgs), r.batches))} · ${fd(r.updated)}</div>""", """      <div class="seglist">${esc(tr.collectLine(fmt(r.orgs), r.batches))} · ${fd(r.updated)}</div>
+      ${esraLine(r, tr)}""", 1)
+# parent country tip (DE): ESRA regions of the country
+T = T.replace("""    <div class="act">${esc(VIEW === 'world' ? tr.clickZoom : tr.clickOpen)} ↗</div>`;
+}""", """    ${esraCountry(t.a2, tr)}
+    <div class="act">${esc(VIEW === 'world' ? tr.clickZoom : tr.clickOpen)} ↗</div>`;
+}""", 1)
+# not covered country: still show ESRA regions (context)
+T = T.replace("""<span class="st none">${esc(tr.notCovered)}</span><div class="seglist">${esc(tr.join)}</div>`;""", """<span class="st none">${esc(tr.notCovered)}</span>${esraCountry(t.a2, tr)}<div class="seglist">${esc(tr.join)}</div>`;""", 1)
+# region cards: after .meta
+T = T.replace("""${r.verified ? `<span>${fmt(r.verified)} ${esc(t.verified)}</span>` : ''}</div>""", """${r.verified ? `<span>${fmt(r.verified)} ${esc(t.verified)}</span>` : ''}</div>
+      ${astLine(r, t)}${esraLine(r, t)}""", 1)
+assert T.count('esraLine(r, t)') == 1 and T.count('esraLine(r, tr)') == 3 and T.count('esraCountry(t.a2, tr)') == 2, 'esra patches'
+T = T.replace("</style>", ".seglist.esra{color:var(--blue);font-weight:500}\n</style>", 1)
+for lang, d in {'cs': ("esraMember: 'členský region ESRA', esraInit: 'iniciátor aliance', esraRegion: 'region', esraRegions: 'regiony', esraNone: 'ESRA: žádný členský region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'vyhlédnuto k podpoře (BMWE, 30. 6. 2026), schválení Komise probíhá',"),
+                'en': ("esraMember: 'ESRA member region', esraInit: 'initiator of the alliance', esraRegion: 'region', esraRegions: 'regions', esraNone: 'ESRA: no member region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'earmarked for funding (BMWE, 30 Jun 2026), Commission approval pending',"),
+                'de': ("esraMember: 'ESRA-Mitgliedsregion', esraInit: 'Initiator der Allianz', esraRegion: 'Region', esraRegions: 'Regionen', esraNone: 'ESRA: keine Mitgliedsregion', ipceiAst: 'IPCEI AST', ipceiAstNote: 'zur Förderung vorgesehen (BMWE, 30.06.2026), Genehmigung der Kommission läuft',")}.items():
+    key = {'cs': "regions: 'Sledované regiony',", 'en': "regions: 'Tracked regions',", 'de': "regions: 'Erfasste Regionen',"}[lang]
+    assert T.count(key) == 1, key; T = T.replace(key, key + ' ' + d, 1)
+# no click hint for regions without a public page (internal pilot)
+T = T.replace("""      ${astLine(r, tr)}${esraLine(r, tr)}
+      <div class="act">${esc(pinned && pinned.touch ? tr.tapAgain : (r.card ? tr.clickCard : tr.clickOpen))} ↗</div>`;""", """      ${astLine(r, tr)}${esraLine(r, tr)}
+      ${(r.card || r.url) ? `<div class="act">${esc(pinned && pinned.touch ? tr.tapAgain : (r.card ? tr.clickCard : tr.clickOpen))} ↗</div>` : `<div class="seglist">${esc(tr.internal)}</div>`}`;""", 1)
+assert '`<div class="seglist">${esc(tr.internal)}</div>`' in T
 (HUB / 'index.html').write_text(T, encoding='utf-8')
 print('hub written', (HUB / 'index.html').stat().st_size, 'bytes;', sum(1 for r in idx['regions'] if r.get('url')), 'public radars,', sum(1 for r in idx['regions'] if r.get('card')), 'cards')

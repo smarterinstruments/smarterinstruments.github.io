@@ -135,7 +135,15 @@
     "equipment": 5,
     "software": 3
    },
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 3,
+    "regions": [
+     "South Moravia",
+     "Pilsen",
+     "Zlín"
+    ]
+   }
   },
   {
    "id": "DE-SN",
@@ -156,8 +164,8 @@
    "public": true,
    "edition": "W46/2026",
    "updated": "2026-11-16",
-   "orgs": 558,
-   "verified": 532,
+   "orgs": 560,
+   "verified": 534,
    "active31": 28,
    "news": 68,
    "events": 5,
@@ -166,17 +174,36 @@
    "repo": "https://github.com/smarterinstruments/Saxony-Radar",
    "seg": {
     "subsystems": 198,
-    "equipment": 79,
+    "equipment": 80,
     "ecosystem": 67,
     "distribution": 47,
     "materials": 40,
     "metrology": 38,
     "fab": 36,
-    "design": 30,
+    "design": 31,
     "software": 22,
     "downstream": 1
    },
-   "card": "https://smarterinstruments.github.io/sn/"
+   "card": "https://smarterinstruments.github.io/sn/",
+   "esra": {
+    "member": true,
+    "since": 2023,
+    "role": "initiator"
+   },
+   "ipcei_ast": 11,
+   "chipsact": {
+    "foak": 2,
+    "foak_list": "ESMC (OEF), Infineon Dresden (IPF)",
+    "pilot_lines": 4,
+    "pilot_lines_total": 11,
+    "pilot_lines_list": "APECS, FAMES, SPINS, SUPREME",
+    "ccc": "G3C (national, FMD)",
+    "det": 2,
+    "det_list": "makeChip DET (Racyics, Dresden), Fraunhofer DET (FMD)",
+    "ipcei_ast_entities": 8,
+    "ipcei_ast_sites_only": 3,
+    "ipcei_ast_source": "https://www.bundeswirtschaftsministerium.de/Redaktion/DE/Artikel/Industrie/mikroelektronik.html"
+   }
   },
   {
    "id": "DE-BY",
@@ -217,7 +244,11 @@
     "distribution": 5,
     "downstream": 3
    },
-   "card": null
+   "card": null,
+   "esra": {
+    "member": true,
+    "since": 2023
+   }
   },
   {
    "id": "RO",
@@ -247,7 +278,11 @@
    "workbook": "Romania_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "HU",
@@ -277,7 +312,11 @@
    "workbook": "Hungary_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "SK",
@@ -307,7 +346,13 @@
    "workbook": "Slovakia_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 1,
+    "regions": [
+     "Bratislava"
+    ]
+   }
   },
   {
    "id": "CA",
@@ -337,7 +382,11 @@
    "workbook": "Canada_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "VN",
@@ -367,7 +416,11 @@
    "workbook": "Vietnam_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "MY",
@@ -397,7 +450,11 @@
    "workbook": "Malaysia_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "IN",
@@ -427,7 +484,11 @@
    "workbook": "India_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "IL",
@@ -457,7 +518,11 @@
    "workbook": "Israel_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "LT",
@@ -487,7 +552,11 @@
    "workbook": "Baltics_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "EE",
@@ -517,7 +586,11 @@
    "workbook": "Baltics_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "LV",
@@ -547,7 +620,11 @@
    "workbook": "Baltics_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "CN",
@@ -577,7 +654,11 @@
    "workbook": "China_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "SG",
@@ -607,7 +688,11 @@
    "workbook": "Singapore_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "PL",
@@ -637,7 +722,13 @@
    "workbook": "Poland_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 1,
+    "regions": [
+     "Pomerania"
+    ]
+   }
   },
   {
    "id": "DK",
@@ -667,7 +758,11 @@
    "workbook": "Denmark_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "NO",
@@ -697,7 +792,11 @@
    "workbook": "Norway_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "FI",
@@ -727,7 +826,15 @@
    "workbook": "Finland_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 3,
+    "regions": [
+     "Helsinki",
+     "Tampere",
+     "Oulu"
+    ]
+   }
   },
   {
    "id": "SE",
@@ -757,7 +864,14 @@
    "workbook": "Sweden_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 2,
+    "regions": [
+     "Östergötland",
+     "Skåne"
+    ]
+   }
   },
   {
    "id": "PT",
@@ -787,7 +901,14 @@
    "workbook": "Portugal_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 2,
+    "regions": [
+     "Centro",
+     "Norte"
+    ]
+   }
   },
   {
    "id": "ES",
@@ -817,7 +938,17 @@
    "workbook": "Spain_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 5,
+    "regions": [
+     "Andalusia",
+     "Basque Country",
+     "Catalonia",
+     "Madrid",
+     "Valencia"
+    ]
+   }
   },
   {
    "id": "CH",
@@ -847,7 +978,11 @@
    "workbook": "Switzerland_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "MT",
@@ -877,7 +1012,11 @@
    "workbook": "Malta_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "GB",
@@ -907,7 +1046,13 @@
    "workbook": "United Kingdom_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 1,
+    "regions": [
+     "Wales"
+    ]
+   }
   },
   {
    "id": "JP",
@@ -937,7 +1082,11 @@
    "workbook": "Japan_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "KR",
@@ -967,7 +1116,11 @@
    "workbook": "South Korea_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "US",
@@ -997,7 +1150,11 @@
    "workbook": "USA_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "TW",
@@ -1027,7 +1184,11 @@
    "workbook": "Taiwan_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 0,
+    "regions": []
+   }
   },
   {
    "id": "AT",
@@ -1057,7 +1218,14 @@
    "workbook": "Austria_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 2,
+    "regions": [
+     "Carinthia",
+     "Styria"
+    ]
+   }
   },
   {
    "id": "DE-BW",
@@ -1088,7 +1256,11 @@
    "seg": {},
    "parent": "DE",
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "member": true,
+    "since": 2023
+   }
   },
   {
    "id": "IT",
@@ -1118,7 +1290,15 @@
    "workbook": "Italy_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 3,
+    "regions": [
+     "Lombardy",
+     "Piemonte",
+     "Sicily"
+    ]
+   }
   },
   {
    "id": "IE",
@@ -1148,7 +1328,13 @@
    "workbook": "Ireland_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 1,
+    "regions": [
+     "Ireland"
+    ]
+   }
   },
   {
    "id": "FR",
@@ -1178,7 +1364,16 @@
    "workbook": "France_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 4,
+    "regions": [
+     "Auvergne-Rhône-Alpes",
+     "Île-de-France",
+     "Occitanie",
+     "Région SUD – Provence-Alpes-Côte d'Azur"
+    ]
+   }
   },
   {
    "id": "BE",
@@ -1208,7 +1403,13 @@
    "workbook": "Belgium_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 1,
+    "regions": [
+     "Flanders"
+    ]
+   }
   },
   {
    "id": "NL",
@@ -1238,8 +1439,98 @@
    "workbook": "Netherlands_Radar_batches_2026-11-17.xlsx",
    "seg": {},
    "url": null,
-   "card": null
+   "card": null,
+   "esra": {
+    "n": 4,
+    "regions": [
+     "Flevoland",
+     "Gelderland",
+     "North Brabant",
+     "Overijssel"
+    ]
+   }
   }
  ],
+ "esra": {
+  "url": "https://www.esra-org.eu/",
+  "total": 44,
+  "chair2026": "Catalonia",
+  "byCountry": {
+   "DE": [
+    "Baden-Württemberg",
+    "Bavaria",
+    "Hamburg",
+    "Hesse",
+    "Lower Saxony",
+    "North Rhine-Westphalia",
+    "Saarland",
+    "Saxony",
+    "Saxony-Anhalt",
+    "Schleswig-Holstein",
+    "Thuringia"
+   ],
+   "ES": [
+    "Andalusia",
+    "Basque Country",
+    "Catalonia",
+    "Madrid",
+    "Valencia"
+   ],
+   "FR": [
+    "Auvergne-Rhône-Alpes",
+    "Île-de-France",
+    "Occitanie",
+    "Région SUD – Provence-Alpes-Côte d'Azur"
+   ],
+   "NL": [
+    "Flevoland",
+    "Gelderland",
+    "North Brabant",
+    "Overijssel"
+   ],
+   "IT": [
+    "Lombardy",
+    "Piemonte",
+    "Sicily"
+   ],
+   "CZ": [
+    "South Moravia",
+    "Pilsen",
+    "Zlín"
+   ],
+   "FI": [
+    "Helsinki",
+    "Tampere",
+    "Oulu"
+   ],
+   "AT": [
+    "Carinthia",
+    "Styria"
+   ],
+   "PT": [
+    "Centro",
+    "Norte"
+   ],
+   "SE": [
+    "Östergötland",
+    "Skåne"
+   ],
+   "BE": [
+    "Flanders"
+   ],
+   "SK": [
+    "Bratislava"
+   ],
+   "PL": [
+    "Pomerania"
+   ],
+   "IE": [
+    "Ireland"
+   ],
+   "GB": [
+    "Wales"
+   ]
+  }
+ },
  "brand": "Global and EU Semiconductor Value Chain Radar"
 }
