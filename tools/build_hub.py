@@ -41,7 +41,7 @@ idx['brand'] = BRAND
 
 T = (HUB / 'tools' / 'template.html').read_text(encoding='utf-8')
 def J(o): return json.dumps(o, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
-for tok, f in [('/*__WORLD__*/', 'world.json'), ('/*__EUROPE__*/', 'europe.json'), ('/*__ESRA__*/', 'esra.json')]:
+for tok, f in [('/*__WORLD__*/', 'world.json'), ('/*__EUROPE__*/', 'europe.json'), ('/*__ESRA__*/', 'esra.json'), ('/*__POINTS__*/', 'points.json')]:
     assert T.count(tok) == 1, tok; T = T.replace(tok, J(json.loads((DATA / f).read_text(encoding='utf-8'))))
 assert T.count('/*__INDEX__*/') == 1; T = T.replace('/*__INDEX__*/', J(idx))
 import re as _re

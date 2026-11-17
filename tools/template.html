@@ -131,6 +131,9 @@ footer a{color:var(--muted)}
 .seglist.esra{color:var(--blue);font-weight:500}
 .esra{fill:url(#esraHatch);stroke:var(--esra);stroke-width:.9;pointer-events:none}:root{--esra:#E8590C;--esra-bg:rgba(232,89,12,.10)}#metric{display:none}.esra-toggle{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);cursor:pointer;margin-left:10px}.esra-toggle i{width:14px;height:10px;display:inline-block;border:1px solid var(--esra);background:repeating-linear-gradient(45deg,var(--esra-bg),var(--esra-bg) 2px,var(--esra) 2px,var(--esra) 3px)}\n.zoomctl{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:4px;z-index:3}.zoomctl button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--card,#fff);color:var(--ink);font-size:17px;line-height:1;cursor:pointer;box-shadow:var(--shadow)}.zoomctl button:hover{border-color:var(--blue);color:var(--blue)}
 .mapbox svg{touch-action:pan-y;cursor:grab}.mapbox svg.dragging{cursor:grabbing}.land,.state,.esra{vector-effect:non-scaling-stroke}
+.layers{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;margin-left:auto}.lt{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted);cursor:pointer}.lt svg,.legend svg{width:14px;height:14px;flex:none}
+.poi{cursor:pointer}.poi .sh{stroke:#fff;stroke-width:calc(1.1px * var(--sw, 1))}.poi.hov .sh{stroke:var(--ink);stroke-width:calc(1.6px * var(--sw, 1))}.poi.assoc .sh{fill-opacity:.55}
+@media(max-width:640px){.layers{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
@@ -152,7 +155,7 @@ footer a{color:var(--muted)}
 <section>
   <div class="bar">
     <div class="seg" id="view"><button data-v="world"></button><button data-v="europe"></button></div>
-    <div class="seg" id="metric"><button data-m="orgs"></button><button data-m="active31"></button><button data-m="news"></button></div><label class="esra-toggle" id="esraToggle"><input type="checkbox" id="esraChk" checked><i></i><span id="esraLbl"></span></label>
+    <div class="seg" id="metric"><button data-m="orgs"></button><button data-m="active31"></button><button data-m="news"></button></div><div class="layers" id="layers"><label class="esra-toggle" id="esraToggle"><input type="checkbox" id="esraChk" checked><i></i><span id="esraLbl"></span></label><span id="layerToggles"></span></div>
   </div>
   <div class="mapbox" id="mapbox">
     <svg id="map" xmlns="http://www.w3.org/2000/svg" role="img"></svg>
@@ -175,7 +178,11 @@ const WORLD = /*__WORLD__*/;
 const EUROPE = /*__EUROPE__*/;
 const IDX = /*__INDEX__*/;
 const ESRA_GEO = /*__ESRA__*/;
+const POINTS = /*__POINTS__*/;
 let ESRA_ON = true;
+const LAYERS = { ccc: true, pl: true, det: true, foak: true, sea: true };
+const LCOL = { ccc: '#0B7285', pl: '#6741D9', det: '#2B8A3E', foak: '#C92A2A', sea: '#E67700' };
+const LOFF = { ccc: [0, 0], pl: [7, -7], det: [-7, 7], foak: [7, 7], sea: [-7, -7] };
 
 const T = {
   cs: {
@@ -183,7 +190,7 @@ const T = {
     lede: 'Které země a regiony už mají týdenní radar veřejné aktivity firem a institucí v polovodičovém hodnotovém řetězci – ve stejné taxonomii, se stejnou metrikou. Najetím na zemi nebo region se zobrazí čísla; klik otevře kartu regionu a jeho živý radar.',
     world: 'Svět', europe: 'Evropa',
     orgs: 'Organizace', active31: 'Aktivní za 31 dní', active31s: 'Aktivní 31 d', news: 'Zprávy', events: 'Termíny', ipcei: 'IPCEI',
-    regions: 'Sledované regiony', legendEsra: 'členský region ESRA (44 regionů, esra-org.eu)', esraToggle: 'ESRA regiony', esraMember: 'členský region ESRA', esraInit: 'iniciátor aliance', esraRegion: 'region', esraRegions: 'regiony', esraNone: 'ESRA: žádný členský region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'vyhlédnuto k podpoře (BMWE, 30. 6. 2026), schválení Komise probíhá', updated: 'Aktualizace', edition: 'Edice', open: 'Živý radar', openCard: 'Karta regionu', clickCard: 'Klik → karta regionu a živý radar', repo: 'Data (GitHub)',
+    regions: 'Sledované regiony', clickSite: 'Klik → web', legendEsra: 'členský region ESRA (44 regionů, esra-org.eu)', esraToggle: 'ESRA regiony', esraMember: 'členský region ESRA', esraInit: 'iniciátor aliance', esraRegion: 'region', esraRegions: 'regiony', esraNone: 'ESRA: žádný členský region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'vyhlédnuto k podpoře (BMWE, 30. 6. 2026), schválení Komise probíhá', updated: 'Aktualizace', edition: 'Edice', open: 'Živý radar', openCard: 'Karta regionu', clickCard: 'Klik → karta regionu a živý radar', repo: 'Data (GitHub)',
     notCovered: 'Zatím bez radaru', join: 'Zájem o zapojení země? info@semicz.cz',
     hint: 'Najeďte na zemi · klik otevře kartu regionu a živý radar', clickOpen: 'Klik → plný radar', clickZoom: 'Klik → regionální radary', tapAgain: 'Klepněte znovu → otevřít',
     parentLine: n => `${n} regionální radary`, topSeg: 'Největší segmenty', verified: 'ověřeno', internal: 'interní náhled – zatím bez veřejné stránky',
@@ -201,7 +208,7 @@ const T = {
     lede: 'Which countries and regions already have a weekly radar of public activity across the semiconductor value chain – same taxonomy, same metric. Hover a country or region for its figures; click opens the region\'s card and live radar.',
     world: 'World', europe: 'Europe',
     orgs: 'Organisations', active31: 'Active in 31 days', active31s: 'Active 31 d', news: 'News items', events: 'Dates', ipcei: 'IPCEI',
-    regions: 'Tracked regions', legendEsra: 'ESRA member region (44 regions, esra-org.eu)', esraToggle: 'ESRA regions', esraMember: 'ESRA member region', esraInit: 'initiator of the alliance', esraRegion: 'region', esraRegions: 'regions', esraNone: 'ESRA: no member region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'earmarked for funding (BMWE, 30 Jun 2026), Commission approval pending', updated: 'Updated', edition: 'Edition', open: 'Live radar', openCard: 'Country card', clickCard: 'Click → country card & live radar', repo: 'Data (GitHub)',
+    regions: 'Tracked regions', clickSite: 'Click → website', legendEsra: 'ESRA member region (44 regions, esra-org.eu)', esraToggle: 'ESRA regions', esraMember: 'ESRA member region', esraInit: 'initiator of the alliance', esraRegion: 'region', esraRegions: 'regions', esraNone: 'ESRA: no member region', ipceiAst: 'IPCEI AST', ipceiAstNote: 'earmarked for funding (BMWE, 30 Jun 2026), Commission approval pending', updated: 'Updated', edition: 'Edition', open: 'Live radar', openCard: 'Country card', clickCard: 'Click → country card & live radar', repo: 'Data (GitHub)',
     notCovered: 'No radar yet', join: 'Want your country in? info@semicz.cz',
     hint: 'Hover a country · click opens the country card and live radar', clickOpen: 'Click → full radar', clickZoom: 'Click → regional radars', tapAgain: 'Tap again → open',
     parentLine: n => `${n} regional radars`, topSeg: 'Largest segments', verified: 'verified', internal: 'internal preview – no public page yet',
@@ -219,7 +226,7 @@ const T = {
     lede: 'Welche Länder und Regionen bereits einen wöchentlichen Radar der öffentlichen Aktivität entlang der Halbleiter-Wertschöpfungskette haben – gleiche Taxonomie, gleiche Metrik. Mit dem Mauszeiger erscheinen die Zahlen; Klick öffnet Regionskarte und Live-Radar.',
     world: 'Welt', europe: 'Europa',
     orgs: 'Organisationen', active31: 'Aktiv in 31 Tagen', active31s: 'Aktiv 31 T.', news: 'Meldungen', events: 'Termine', ipcei: 'IPCEI',
-    regions: 'Erfasste Regionen', legendEsra: 'ESRA-Mitgliedsregion (44 Regionen, esra-org.eu)', esraToggle: 'ESRA-Regionen', esraMember: 'ESRA-Mitgliedsregion', esraInit: 'Initiator der Allianz', esraRegion: 'Region', esraRegions: 'Regionen', esraNone: 'ESRA: keine Mitgliedsregion', ipceiAst: 'IPCEI AST', ipceiAstNote: 'zur Förderung vorgesehen (BMWE, 30.06.2026), Genehmigung der Kommission läuft', updated: 'Aktualisiert', edition: 'Ausgabe', open: 'Live-Radar', openCard: 'Regionskarte', clickCard: 'Klick → Regionskarte & Live-Radar', repo: 'Daten (GitHub)',
+    regions: 'Erfasste Regionen', clickSite: 'Klick → Website', legendEsra: 'ESRA-Mitgliedsregion (44 Regionen, esra-org.eu)', esraToggle: 'ESRA-Regionen', esraMember: 'ESRA-Mitgliedsregion', esraInit: 'Initiator der Allianz', esraRegion: 'Region', esraRegions: 'Regionen', esraNone: 'ESRA: keine Mitgliedsregion', ipceiAst: 'IPCEI AST', ipceiAstNote: 'zur Förderung vorgesehen (BMWE, 30.06.2026), Genehmigung der Kommission läuft', updated: 'Aktualisiert', edition: 'Ausgabe', open: 'Live-Radar', openCard: 'Regionskarte', clickCard: 'Klick → Regionskarte & Live-Radar', repo: 'Daten (GitHub)',
     notCovered: 'Noch kein Radar', join: 'Interesse am eigenen Land? info@semicz.cz',
     hint: 'Land überfahren · Klick öffnet Regionskarte und Live-Radar', clickOpen: 'Klick → vollständiger Radar', clickZoom: 'Klick → regionale Radare', tapAgain: 'Erneut tippen → öffnen',
     parentLine: n => `${n} regionale Radare`, topSeg: 'Größte Segmente', verified: 'verifiziert', internal: 'interne Vorschau – noch keine öffentliche Seite',
@@ -285,6 +292,9 @@ function renderTexts() {
   ].map(([v,l]) => `<div class="tile"><div class="v">${v}</div><div class="l">${esc(l)}</div></div>`).join('');
   $('legend').innerHTML = `<span><i style="background:var(--blue)"></i>${t.legendTracked}</span><span><i style="background:var(--pilot)"></i>${t.legendPilot}</span><span><i style="background:var(--parent)"></i>${t.legendParent}</span><span><i style="background:var(--collect);border:1px dashed var(--blue)"></i>${t.legendCollect}</span><span><i style="background:var(--land)"></i>${t.legendNone}</span><span><i style="border:1px solid var(--esra);background:repeating-linear-gradient(45deg,var(--esra-bg),var(--esra-bg) 2px,var(--esra) 2px,var(--esra) 3px)"></i>${t.legendEsra}</span>`;
   $('esraLbl').textContent = t.esraToggle;
+  $('layerToggles').innerHTML = Object.keys(LAYERS).map(l => `<label class="lt"><input type="checkbox" data-l="${l}" ${LAYERS[l] ? 'checked' : ''}>${legendSym(l)}<span>${esc(POINTS.layers[l][LANG] || POINTS.layers[l].en)}</span></label>`).join('');
+  $('layerToggles').querySelectorAll('input').forEach(i => i.addEventListener('change', e => { LAYERS[e.target.dataset.l] = e.target.checked; renderMap(); }));
+  $('legend').innerHTML += Object.keys(LAYERS).map(l => `<span>${legendSym(l)}${esc(POINTS.layers[l][LANG] || POINTS.layers[l].en)} (${POINTS.points.filter(p => p.l === l).length})</span>`).join('');
   renderCards();
   $('about').innerHTML = `<h2 style="margin-top:0">${esc(t.aboutH)}</h2>` + t.about.map(p => `<p>${esc(p)}</p>`).join('') + `<p><b>${esc(t.join)}</b></p>`;
   $('foot').innerHTML = `${esc(t.foot)} · © 2026 Czech National Semiconductor Cluster, z.s. · <a href="https://www.semicz.cz" target="_blank" rel="noopener">semicz.cz</a> · ${esc(t.updated)}: ${fd(IDX.updated)}`;
@@ -325,9 +335,35 @@ const svg = $('map'), tip = $('tip'), box = $('mapbox');
 const NS = 'http://www.w3.org/2000/svg';
 function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
 
+
+function markerSvg(l, x, y, r) {
+  const c = LCOL[l];
+  if (l === 'ccc') return `<rect class="sh" x="${x - r}" y="${y - r}" width="${2 * r}" height="${2 * r}" rx="1.5" fill="${c}"/>`;
+  if (l === 'pl') return `<path class="sh" d="M${x},${y - r * 1.15} L${x + r * 1.1},${y + r * 0.8} L${x - r * 1.1},${y + r * 0.8} Z" fill="${c}"/>`;
+  if (l === 'det') return `<path class="sh" d="M${x},${y - r * 1.2} L${x + r * 1.2},${y} L${x},${y + r * 1.2} L${x - r * 1.2},${y} Z" fill="${c}"/>`;
+  if (l === 'foak') { const pts = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * 0.55 : r * 1.3; pts.push((x + rr * Math.cos(a)).toFixed(1) + ',' + (y + rr * Math.sin(a)).toFixed(1)); } return `<polygon class="sh" points="${pts.join(' ')}" fill="${c}"/>`; }
+  return `<circle class="sh" cx="${x}" cy="${y}" r="${r * 0.95}" fill="${c}"/>`;
+}
+function legendSym(l) { return `<svg viewBox="0 0 16 16">${markerSvg(l, 8, 8, 5)}</svg>`; }
+
+// Pillar I / Silicon Europe point layers (Europe view): markers keep their screen size while zooming
+function renderPois() {
+  const oldg = svg.querySelector('g.pois'); if (oldg) oldg.remove();
+  if (VIEW !== 'europe') return;
+  const G = curG(); const z = ZOOM[VIEW] || fullBox(G); const s = z.w / G.W;   // 1 = full extent
+  const pg = el('g', { class: 'pois' }, svg);
+  const seen = {};
+  POINTS.points.filter(p => LAYERS[p.l]).forEach(p => {
+    const [ox, oy] = LOFF[p.l]; const key = p.l + ':' + Math.round(p.x / 4) + ':' + Math.round(p.y / 4); const k = seen[key] = (seen[key] || 0) + 1;
+    const x = p.x + (ox + (k - 1) * 11) * s, y = p.y + oy * s;   // same layer, same place: spread to the right
+    const g = el('g', { class: 'poi ' + p.l + (p.assoc ? ' assoc' : ''), 'data-id': p.id }, pg); g.style.setProperty('--sw', s);
+    g.innerHTML = markerSvg(p.l, x, y, 6.5 * s);
+    g.__t = { kind: 'poi', id: p.id };
+  });
+}
 function renderMap() {
   const G = VIEW === 'world' ? WORLD : EUROPE;
-  $('esraToggle').style.display = VIEW === 'europe' ? '' : 'none';
+  $('layers').style.display = VIEW === 'europe' ? '' : 'none';
   applyZoom(G);
   while (svg.firstChild) svg.removeChild(svg.firstChild);
   if (VIEW === 'world') el('path', { d: WORLD.sphere, class: 'sphere' }, svg);
@@ -352,6 +388,7 @@ function renderMap() {
     const eg = el('g', { class: 'esra-layer' }, svg);
     ESRA_GEO.regions.forEach(r => { el('path', { d: r.d, class: 'esra', 'data-id': r.id }, eg); });
   }
+  renderPois();
   // badges (count bubbles) are switched off: numbers live in the hover card
   const badges = [];
   if (false) {
@@ -444,6 +481,14 @@ function esraCountry(a2, tr) { const l = (IDX.esra && IDX.esra.byCountry[a2]) ||
 function astLine(r, tr) { return r.ipcei_ast ? `<div class="seglist">${esc(tr.ipceiAst)}: <b>${fmt(r.ipcei_ast)}</b> · ${esc(tr.ipceiAstNote)}</div>` : ''; }
 function tipHtml(t) {
   const tr = T[LANG];
+  if (t.kind === 'poi') {
+    const p = POINTS.points.find(x => x.id === t.id); if (!p) return '';
+    const ln = POINTS.layers[p.l][LANG] || POINTS.layers[p.l].en;
+    return `<h4><span>${esc(p.n)}</span><span class="code">${esc(p.a2)}</span></h4>
+      <span class="st" style="background:${LCOL[p.l]}22;color:${LCOL[p.l]}">${esc(ln)}</span>
+      <div class="seglist" style="margin-top:6px">${esc(p.host)} · ${esc(p.city)}${p.note ? ' · ' + esc(p.note) : ''}</div>
+      ${p.u ? `<div class="act">${esc(tr.clickSite)} ↗</div>` : ''}`;
+  }
   if (t.kind === 'region') {
     const r = regById[t.id];
     if (r.status === 'collecting') return `<h4><span>${esc(r.name[LANG])}</span><span class="code">${r.a2}</span></h4>
@@ -496,12 +541,13 @@ svg.addEventListener('pointermove', e => {
   const n = targetOf(e);
   if (hov && hov !== n) { hov.classList.remove('hov'); hov = null; }
   if (!n) { if (!pinned) hideTip(); return; }
-  if (n.classList.contains('land') || n.classList.contains('state')) { n.classList.add('hov'); hov = n; }
+  if (n.classList.contains('land') || n.classList.contains('state') || n.classList.contains('poi')) { n.classList.add('hov'); hov = n; }
   const r = box.getBoundingClientRect();
   pinned = null; showTip(n.__t, e.clientX - r.left, e.clientY - r.top);
 });
 svg.addEventListener('pointerleave', () => { if (hov) { hov.classList.remove('hov'); hov = null; } if (!pinned) hideTip(); });
 function activate(t) {
+  if (t.kind === 'poi') { const p = POINTS.points.find(x => x.id === t.id); if (p && p.u) window.open(p.u, '_blank', 'noopener'); return; }
   if (t.kind === 'region') { const r = regById[t.id]; const u = r.card || r.url; if (u) window.open(u, '_blank', 'noopener'); return; }
   if (t.kind === 'group') { const g = ALL.find(r => r.group === t.group && (r.card || r.url)); if (g) window.open(g.card || g.url, '_blank', 'noopener'); return; }
   if (t.kind === 'country' && byA2[t.a2] && byA2[t.a2].every(r => !r.url)) return;
@@ -530,7 +576,9 @@ svg.addEventListener('pointerup', e => {
 const ZOOM = { world: null, europe: null };   // {x,y,w,h} per view, null = full extent
 function fullBox(G) { return { x: 0, y: 0, w: G.W, h: G.H }; }
 function curG() { return VIEW === 'world' ? WORLD : EUROPE; }
-function applyZoom(G) { const z = ZOOM[VIEW] || fullBox(G); svg.setAttribute('viewBox', `${z.x} ${z.y} ${z.w} ${z.h}`); svg.style.touchAction = ZOOM[VIEW] ? 'none' : 'pan-y'; const zc = $('zoomctl'); if (zc) zc.classList.toggle('zoomed', !!ZOOM[VIEW]); }
+function applyZoom(G) { const z = ZOOM[VIEW] || fullBox(G); svg.setAttribute('viewBox', `${z.x} ${z.y} ${z.w} ${z.h}`); svg.style.touchAction = ZOOM[VIEW] ? 'none' : 'pan-y';
+  const s = z.w / G.W; const pat = svg.querySelector('#esraHatch'); if (pat) { pat.setAttribute('width', 5 * s); pat.setAttribute('height', 5 * s); const ln = pat.querySelector('line'); if (ln) { ln.setAttribute('y2', 5 * s); ln.setAttribute('stroke-width', 1.1 * s); } }
+  if (svg.querySelector('g.pois')) renderPois(); const zc = $('zoomctl'); if (zc) zc.classList.toggle('zoomed', !!ZOOM[VIEW]); }
 function clampBox(z, G) {
   const minW = G.W / 10; z.w = Math.min(G.W, Math.max(minW, z.w)); z.h = z.w * G.H / G.W;
   z.x = Math.min(G.W - z.w, Math.max(0, z.x)); z.y = Math.min(G.H - z.h, Math.max(0, z.y)); return z;
@@ -550,7 +598,7 @@ const ptrs = new Map(); let drag = null, pinch = null, moved = false;
 svg.addEventListener('pointerdown', e => { ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false;
   if (ptrs.size === 1) { drag = { x: e.clientX, y: e.clientY }; }
   else if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), cx: (a[0] + b[0]) / 2, cy: (a[1] + b[1]) / 2 }; drag = null; }
-  try { svg.setPointerCapture(e.pointerId); } catch (x) {} });
+  });
 svg.addEventListener('pointermove', e => {
   if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, [e.clientX, e.clientY]);
   if (pinch && ptrs.size === 2) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2;
@@ -562,7 +610,7 @@ svg.addEventListener('pointermove', e => {
     const r = svg.getBoundingClientRect(); const z = ZOOM[VIEW] || fullBox(curG()); panBy(dx / r.width * z.w, dy / r.height * z.h); drag = { x: e.clientX, y: e.clientY }; hideTip(); }
 });
 function endPtr(e) { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; if (ptrs.size === 0) { drag = null; svg.classList.remove('dragging'); } }
-svg.addEventListener('pointerup', endPtr); svg.addEventListener('pointercancel', endPtr); svg.addEventListener('lostpointercapture', endPtr);
+svg.addEventListener('pointerup', endPtr); svg.addEventListener('pointercancel', endPtr); window.addEventListener('pointerup', endPtr);
 svg.addEventListener('click', e => { if (moved) { e.stopImmediatePropagation(); e.preventDefault(); moved = false; } }, true);
 
 // ---------- controls ----------
