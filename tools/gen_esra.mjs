@@ -1,12 +1,12 @@
 // ESRA member regions (esra-org.eu, 17 Nov 2026) as projected SVG paths in the Europe view (same projection as gen_eu.mjs)
 import fs from 'fs';
 import { geoConicConformal, geoPath, geoCentroid } from 'd3-geo';
-const W = 1000, H = 640;
+const W = 1000, H = 760;   // frame −10..39° E / 34.8..71.5° N (North Cape), fitted by height; side margins show the clipped world
 const ring = [];
 for (let lon = -10; lon <= 39; lon += 1) ring.push([lon, 34.8]);
-for (let lat = 34.8; lat <= 65; lat += 1) ring.push([39, lat]);
-for (let lon = 39; lon >= -10; lon -= 1) ring.push([lon, 65]);
-for (let lat = 65; lat >= 34.8; lat -= 1) ring.push([-10, lat]);
+for (let lat = 34.8; lat <= 71.5; lat += 1) ring.push([39, lat]);
+for (let lon = 39; lon >= -10; lon -= 1) ring.push([lon, 71.5]);
+for (let lat = 71.5; lat >= 34.8; lat -= 1) ring.push([-10, lat]);
 ring.push([-10, 34.8]);
 const frame = { type: 'Polygon', coordinates: [ring.reverse()] };
 const proj = geoConicConformal().parallels([40, 65]).rotate([-14, 0]).fitSize([W, H], frame).clipExtent([[0, 0], [W, H]]);
@@ -34,6 +34,6 @@ for (const [id, name, a2] of MEMBERS) {
   if (!d) { missing.push(id + ' (outside frame)'); continue; }
   out.push({ id, name, a2, d: d.replace(/(\d+\.\d{1})\d+/g, '$1'), c: c ? c.map(v => +v.toFixed(1)) : null, nuts: f.properties.na });
 }
-fs.writeFileSync('esra.json', JSON.stringify({ W, H, url: 'https://www.esra-org.eu/', read: '2026-11-17', total: MEMBERS.length, regions: out }));
+fs.writeFileSync('data/esra.json', JSON.stringify({ W, H, url: 'https://www.esra-org.eu/', read: '2026-11-17', total: MEMBERS.length, regions: out }));
 console.log('esra regions', out.length, 'missing', missing, 'size', fs.statSync('esra.json').size);
 console.log(out.map(r => r.id + '=' + r.nuts).join(' | '));

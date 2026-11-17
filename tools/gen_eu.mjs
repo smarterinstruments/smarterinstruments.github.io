@@ -4,13 +4,13 @@ import { geoConicConformal, geoPath, geoCentroid, geoBounds } from 'd3-geo';
 import countries from 'i18n-iso-countries';
 const topo = JSON.parse(fs.readFileSync('node_modules/world-atlas/countries-50m.json'));
 const geo = topojson.feature(topo, topo.objects.countries);
-const W = 1000, H = 640;
+const W = 1000, H = 760;   // frame −10..39° E / 34.8..71.5° N (North Cape), fitted by height; side margins show the clipped world
 // frame polygon for Europe
 const ring = [];
 for (let lon = -10; lon <= 39; lon += 1) ring.push([lon, 34.8]);     // bottom edge along the parallel (dense, so fitSize sees the parallel's sag)
-for (let lat = 34.8; lat <= 65; lat += 1) ring.push([39, lat]);
-for (let lon = 39; lon >= -10; lon -= 1) ring.push([lon, 65]);
-for (let lat = 65; lat >= 34.8; lat -= 1) ring.push([-10, lat]);
+for (let lat = 34.8; lat <= 71.5; lat += 1) ring.push([39, lat]);
+for (let lon = 39; lon >= -10; lon -= 1) ring.push([lon, 71.5]);
+for (let lat = 71.5; lat >= 34.8; lat -= 1) ring.push([-10, lat]);
 ring.push([-10, 34.8]);
 const frame = { type: 'Polygon', coordinates: [ring.reverse()] };
 const proj = geoConicConformal().parallels([40, 65]).rotate([-14, 0]).fitSize([W, H], frame).clipExtent([[0, 0], [W, H]]);
@@ -41,7 +41,7 @@ for (const f of geo.features) {
 }
 const states = JSON.parse(fs.readFileSync('de_states.geojson'));
 const st = states.features.map(f => ({ id: f.properties.id, d: path(f).replace(/(\d+\.\d{1})\d+/g, '$1'), c: proj(geoCentroid(f)).map(v => +v.toFixed(1)) }));
-fs.writeFileSync('europe.json', JSON.stringify({ W, H, countries: out, states: st }));
+fs.writeFileSync('data/europe.json', JSON.stringify({ W, H, countries: out, states: st }));
 console.log('eu countries', out.length, 'size', fs.statSync('europe.json').size);
 console.log(out.filter(c => ['CZ', 'DE', 'FR', 'NL', 'BE', 'AT', 'PL', 'IT', 'ES', 'IE', 'FI', 'SE', 'GB', 'CH', 'NO', 'PT', 'HU', 'SK', 'RO', 'GR', 'TR', 'IL'].includes(c.a2)).map(c => c.a2 + ':' + c.c).join(' '));
 console.log(st.map(s => s.id + ':' + s.c).join(' '));
