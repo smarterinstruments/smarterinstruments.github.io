@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join Chips Act on the Radar – competence centre registration</title>
+<style>
+  :root { --bg:#f6f8f6; --card:#ffffff; --ink:#0b1a14; --muted:#5b6b62; --line:#d7e0da; --lime:#8fc41f; --lime-dark:#5c8a0f; --dark:#071313; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Arial, Helvetica, sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
+  header { background:var(--dark); color:#fff; padding:28px 20px 24px; }
+  header .wrap { max-width:760px; margin:0 auto; }
+  header .kicker { color:#b9ec2f; font-size:13px; letter-spacing:.04em; text-transform:uppercase; margin:0 0 6px; }
+  header h1 { margin:0 0 8px; font-size:26px; font-weight:700; line-height:1.2; }
+  header p { margin:0; color:#cfd8d2; font-size:15px; max-width:640px; }
+  main { max-width:760px; margin:0 auto; padding:20px 16px 48px; }
+  .intro { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin:0 0 18px; font-size:15px; }
+  .intro ul { margin:8px 0 0; padding-left:20px; }
+  .intro li { margin:3px 0; }
+  fieldset { border:1px solid var(--line); border-radius:10px; background:var(--card); padding:14px 18px 18px; margin:0 0 16px; }
+  legend { font-weight:700; font-size:16px; padding:0 6px; color:var(--lime-dark); }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px 16px; }
+  @media (max-width:600px) { .grid { grid-template-columns:1fr; } }
+  label { display:block; font-size:14px; font-weight:600; margin:0 0 4px; }
+  label .req { color:#b4232f; font-weight:700; }
+  .hint { font-size:12.5px; color:var(--muted); font-weight:400; margin:2px 0 0; }
+  input[type=text], input[type=email], input[type=url], input[type=tel], input[type=month], select, textarea {
+    width:100%; font:inherit; font-size:15px; padding:9px 10px; border:1px solid #b9c5be; border-radius:7px; background:#fff; color:var(--ink);
+  }
+  textarea { min-height:84px; resize:vertical; }
+  input:focus, select:focus, textarea:focus { outline:2px solid var(--lime); border-color:var(--lime-dark); }
+  .checks { display:grid; gap:10px; }
+  .check { display:flex; gap:10px; align-items:flex-start; font-size:14.5px; font-weight:400; }
+  .check input { margin-top:4px; width:18px; height:18px; flex:0 0 auto; }
+  .check b { display:block; }
+  .check span.d { color:var(--muted); font-size:13px; }
+  .radios { display:grid; gap:8px; }
+  .radio { display:flex; gap:10px; align-items:center; font-size:14.5px; font-weight:400; }
+  .radio input { width:18px; height:18px; }
+  .consent { background:#f1f7e6; border:1px solid #cfe3a8; border-radius:8px; padding:12px 14px; font-size:14px; }
+  .consent p { margin:0 0 10px; }
+  .actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:6px; }
+  button { font:inherit; font-size:15px; font-weight:700; padding:11px 18px; border-radius:8px; border:0; cursor:pointer; }
+  .primary { background:var(--lime); color:var(--dark); }
+  .primary:hover { background:#a4d93a; }
+  .secondary { background:#e6ece8; color:var(--ink); }
+  .secondary:hover { background:#d9e2dc; }
+  .note { font-size:13px; color:var(--muted); }
+  .error { color:#b4232f; font-size:14px; font-weight:600; margin:8px 0 0; display:none; }
+  #result { display:none; margin-top:18px; }
+  #result .box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+  #result h2 { margin:0 0 6px; font-size:18px; }
+  #result pre { white-space:pre-wrap; word-wrap:break-word; background:#f3f6f4; border:1px solid var(--line); border-radius:8px; padding:12px; font-size:13px; font-family:Menlo, Consolas, monospace; max-height:320px; overflow:auto; }
+  footer { max-width:760px; margin:0 auto; padding:0 16px 40px; font-size:12.5px; color:var(--muted); }
+  footer a { color:var(--lime-dark); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="kicker"><a href="https://smarterinstruments.github.io/" style="color:#b9ec2f;text-decoration:none">&larr; Chips Act on the Radar</a> · CNSC / Czech Semiconductor Centre</p>
+    <h1>Competence centre registration – join the shared tools</h1>
+    <p>One form, about five minutes. Tell us which tools your centre wants to work with and who validates your region's data. Nothing about your region is published before your centre has validated it.</p>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <strong>What you can join</strong>
+    <ul>
+      <li><b>Value Chain Radar</b> – a country layer for your region under the shared taxonomy, validated and co-branded by your centre.</li>
+      <li><b>IP Catalogue</b> – IP and results of your centre and the pilot lines you work with, searchable by taxonomy code.</li>
+      <li><b>Cross-centre referrals</b> – one shared case record, so a referral counts for both centres (home centre reports, host records).</li>
+      <li><b>Pillar I Radar</b> (alpha), <b>Silicon Atlas</b> scenarios and <b>taxonomy &amp; radar training</b> for your team.</li>
+    </ul>
+  </div>
+
+  <form id="f" novalidate>
+    <fieldset>
+      <legend>1 · Your centre</legend>
+      <div class="grid">
+        <div><label for="centre">Competence centre <span class="req">*</span></label><input type="text" id="centre" name="Competence centre" required placeholder="e.g. Czech Semiconductor Centre"></div>
+        <div><label for="country">Country / region <span class="req">*</span></label><input type="text" id="country" name="Country / region" required placeholder="e.g. Slovakia"></div>
+        <div><label for="entity">Host organisation (legal entity) <span class="req">*</span></label><input type="text" id="entity" name="Host organisation" required></div>
+        <div><label for="web">Website</label><input type="url" id="web" name="Website" placeholder="https://"></div>
+        <div>
+          <label for="network">Network status</label>
+          <select id="network" name="Network status">
+            <option value="">– select –</option>
+            <option>Chips Act competence centre (ENCCC / aCCCess)</option>
+            <option>Applying / in preparation</option>
+            <option>Cluster or regional partner of a centre</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Contact person for this cooperation</legend>
+      <div class="grid">
+        <div><label for="name">Name <span class="req">*</span></label><input type="text" id="name" name="Contact name" required></div>
+        <div><label for="role">Role</label><input type="text" id="role" name="Role" placeholder="e.g. Head of services"></div>
+        <div><label for="email">Work e-mail <span class="req">*</span></label><input type="email" id="email" name="E-mail" required></div>
+        <div><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="Phone"></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · What your centre wants to join <span class="req">*</span></legend>
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="Join" value="Value Chain Radar – country layer (validate segments, co-brand country card)"><span><b>Value Chain Radar – country layer</b><span class="d">You validate the segment assignments of your region's organisations; the country card carries your centre's name.</span></span></label>
+        <label class="check"><input type="checkbox" name="Join" value="IP Catalogue – entries of our centre / pilot lines"><span><b>IP Catalogue</b><span class="d">List IP and results of your centre and the pilot lines you work with.</span></span></label>
+        <label class="check"><input type="checkbox" name="Join" value="Cross-centre referrals – shared case record"><span><b>Cross-centre referrals</b><span class="d">A shared record for referred clients, so the case counts for both centres (NCC2 evidence).</span></span></label>
+        <label class="check"><input type="checkbox" name="Join" value="Pillar I Radar – alpha access and feedback"><span><b>Pillar I Radar – alpha access</b><span class="d">Weekly radar of pilot lines, competence centres and EuroCDP; you give feedback.</span></span></label>
+        <label class="check"><input type="checkbox" name="Join" value="Silicon Atlas – scenarios for our region"><span><b>Silicon Atlas scenarios</b><span class="d">Outage scenarios in the global supply chain with Chips Act 2.0 response hints, for your region.</span></span></label>
+        <label class="check"><input type="checkbox" name="Join" value="Taxonomy and radar training for our team"><span><b>Taxonomy &amp; radar training</b><span class="d">A moderated session for your team (counts as SDT1/SDT2 for your centre).</span></span></label>
+      </div>
+      <p class="error" id="errJoin">Please tick at least one item.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Practicalities</legend>
+      <div class="grid">
+        <div><label for="partner">Regional cluster or partner to involve</label><input type="text" id="partner" name="Regional partner" placeholder="e.g. a regional cluster, DET, pilot line"></div>
+        <div><label for="start">Preferred start</label><input type="month" id="start" name="Preferred start"></div>
+      </div>
+      <label style="margin-top:12px">Fee model you would consider</label>
+      <div class="radios">
+        <label class="radio"><input type="radio" name="Fee model" value="Alpha – free pilot phase" checked> Alpha – free pilot phase</label>
+        <label class="radio"><input type="radio" name="Fee model" value="Subscription per country layer"> Subscription per country layer</label>
+        <label class="radio"><input type="radio" name="Fee model" value="Sponsorship / in-kind (data validation, sources)"> Sponsorship / in-kind (data validation, sources)</label>
+        <label class="radio"><input type="radio" name="Fee model" value="Not decided yet"> Not decided yet</label>
+      </div>
+      <label for="comments" style="margin-top:12px">Comments or questions</label>
+      <textarea id="comments" name="Comments"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Data and consent</legend>
+      <div class="consent">
+        <p>The radars and the catalogue carry <b>organisation-level data only</b>. The contact details in this form go into the CNSC cooperation register and are never shown in any radar, card or export. Your region's data is published only after your centre has validated it.</p>
+        <label class="check"><input type="checkbox" id="consent" required><span><b>I agree that CNSC keeps these contact details for this cooperation.</b> <span class="req">*</span></span></label>
+      </div>
+      <p class="error" id="errConsent">Consent is needed to register.</p>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit" class="primary">Send registration</button>
+      <button type="button" class="secondary" id="preview">Preview as text</button>
+      <span class="note">“Send” opens your e-mail app with the registration addressed to CNSC. If it does not open, copy the text below and send it to <b>cerny@semicz.eu</b>.</span>
+    </div>
+    <p class="error" id="errReq">Please fill in the fields marked *.</p>
+  </form>
+
+  <div id="result">
+    <div class="box">
+      <h2>Your registration</h2>
+      <p class="note" id="resultNote">Copy this text into an e-mail to <b>cerny@semicz.eu</b> if your mail app did not open.</p>
+      <pre id="out"></pre>
+      <div class="actions">
+        <button type="button" class="secondary" id="copy">Copy text</button>
+        <a id="mailto" class="note" href="#">Open in e-mail app again</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Chips Act on the Radar is a set of analytical tools of the Czech National Semiconductor Cluster (CNSC), delivered as a service of the Czech Semiconductor Centre. Contact: Stanislav Černý, cerny@semicz.eu.
+</footer>
+
+<script>
+(function(){
+  var TO = "cerny@semicz.eu";
+  var form = document.getElementById("f");
+  var out = document.getElementById("out");
+  var result = document.getElementById("result");
+  var errReq = document.getElementById("errReq");
+  var errJoin = document.getElementById("errJoin");
+  var errConsent = document.getElementById("errConsent");
+
+  function val(id){ return (document.getElementById(id).value || "").trim(); }
+  function joins(){
+    var a = [];
+    var cs = form.querySelectorAll('input[name="Join"]:checked');
+    for (var i=0;i<cs.length;i++) a.push(cs[i].value);
+    return a;
+  }
+  function fee(){
+    var r = form.querySelector('input[name="Fee model"]:checked');
+    return r ? r.value : "";
+  }
+  function build(){
+    var lines = [];
+    lines.push("CHIPS ACT ON THE RADAR – COMPETENCE CENTRE REGISTRATION");
+    lines.push("Date: " + new Date().toISOString().slice(0,10));
+    lines.push("");
+    lines.push("1 · CENTRE");
+    lines.push("Competence centre: " + val("centre"));
+    lines.push("Country / region: " + val("country"));
+    lines.push("Host organisation: " + val("entity"));
+    lines.push("Website: " + val("web"));
+    lines.push("Network status: " + val("network"));
+    lines.push("");
+    lines.push("2 · CONTACT");
+    lines.push("Name: " + val("name"));
+    lines.push("Role: " + val("role"));
+    lines.push("E-mail: " + val("email"));
+    lines.push("Phone: " + val("phone"));
+    lines.push("");
+    lines.push("3 · JOINING");
+    var j = joins();
+    for (var i=0;i<j.length;i++) lines.push("- " + j[i]);
+    lines.push("");
+    lines.push("4 · PRACTICALITIES");
+    lines.push("Regional partner to involve: " + val("partner"));
+    lines.push("Preferred start: " + val("start"));
+    lines.push("Fee model: " + fee());
+    lines.push("Comments: " + val("comments"));
+    lines.push("");
+    lines.push("5 · CONSENT");
+    lines.push("Consent to keep contact details in the CNSC cooperation register: " + (document.getElementById("consent").checked ? "yes" : "no"));
+    return lines.join("\n");
+  }
+  function validate(){
+    var ok = true;
+    var req = ["centre","country","entity","name","email"];
+    var missing = false;
+    for (var i=0;i<req.length;i++){
+      var el = document.getElementById(req[i]);
+      if (!el.value.trim() || (el.type==="email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim()))) { missing = true; }
+    }
+    errReq.style.display = missing ? "block" : "none";
+    if (missing) ok = false;
+    var j = joins().length > 0;
+    errJoin.style.display = j ? "none" : "block";
+    if (!j) ok = false;
+    var c = document.getElementById("consent").checked;
+    errConsent.style.display = c ? "none" : "block";
+    if (!c) ok = false;
+    return ok;
+  }
+  function show(text){
+    out.textContent = text;
+    result.style.display = "block";
+    var subject = "Chips Act on the Radar – registration: " + val("centre") + " (" + val("country") + ")";
+    var href = "mailto:" + TO + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
+    document.getElementById("mailto").setAttribute("href", href);
+    return href;
+  }
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (!validate()) { return; }
+    var href = show(build());
+    window.location.href = href;
+    result.scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  document.getElementById("preview").addEventListener("click", function(){
+    validate();
+    show(build());
+    result.scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  document.getElementById("copy").addEventListener("click", function(){
+    var t = out.textContent;
+    var done = function(){ document.getElementById("copy").textContent = "Copied"; setTimeout(function(){ document.getElementById("copy").textContent = "Copy text"; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, function(){ fallback(t); done(); }); }
+    else { fallback(t); done(); }
+    function fallback(s){ var ta = document.createElement("textarea"); ta.value = s; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch(err) {} document.body.removeChild(ta); }
+  });
+})();
+</script>
+</body>
+</html>
